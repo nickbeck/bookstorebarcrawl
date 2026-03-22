@@ -510,7 +510,9 @@
 
 
     @media (max-width: 640px) {
-      .venue-grid, .routes-grid { grid-template-columns: 1fr; }      nav ul li a { padding: 0.65rem 0.7rem; font-size: 0.61rem; }
+      nav { position: static; }
+      .venue-grid, .routes-grid { grid-template-columns: 1fr; }
+      nav ul li a { padding: 0.65rem 0.7rem; font-size: 0.61rem; }
       .origin-block { padding: 2rem 1.5rem; }
       .signup-form { flex-direction: column; }
       .signup-form input[type="email"] { border-right: 2px solid var(--ink); border-bottom: none; }
@@ -952,10 +954,10 @@
 <div class="signup">
   <h2>Future Crawls & Updates</h2>
   <p>Get notified when we organize the next group crawl through the stacks and stools of New York.</p>
-  <div class="signup-form">
-    <input type="email" id="email-input" placeholder="your@email.com" />
-    <button onclick="handleSignup()">Sign Up</button>
-  </div>
+  <form class="signup-form" action="https://formspree.io/f/xyknqkrr" method="POST" id="signup-form">
+    <input type="email" name="email" id="email-input" placeholder="your@email.com" required />
+    <button type="submit">Sign Up</button>
+  </form>
   <p id="signup-confirm" style="display:none;margin-top:1rem;color:var(--moss);font-family:'Courier Prime',monospace;font-size:0.8rem;letter-spacing:0.1em;">✓ You're on the list.</p>
 </div>
 
@@ -963,25 +965,27 @@
 <footer>
   <p class="footer-quote">"In wine there is wisdom, in beer there is freedom, in water there is bacteria." — Benjamin Franklin</p>
   <hr />
-  <p><a href="/cdn-cgi/l/email-protection#640a0d070c0b0805170601070f4f060b0b0f17240309050d084a070b09">Contact</a> &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection#8ee0e7ede6e1e2effdecebede5a5ece1e1e5fdcee9e3efe7e2a0ede1e3"><span class="__cf_email__" data-cfemail="7f11161c1710131e0c1d1a1c14541d1010140c3f18121e1613511c1012">[email&#160;protected]</span></a></p>
-  <p style="margin-top:0.75rem;opacity:0.4;">© 2024 Bookstore Bar Crawl NYC &nbsp;·&nbsp; bookstorebarcrawl.com</p>
+  <p><a href="/cdn-cgi/l/email-protection#c8a6a1aba0a7a4a9bbaaadaba388afa5a9a1a4e6aba7a5">Contact</a> &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection#4927202a212625283a2b2c2a22092e24282025672a2624"><span class="__cf_email__" data-cfemail="bbd5d2d8d3d4d7dac8d9ded8d0fbdcd6dad2d795d8d4d6">[email&#160;protected]</span></a></p>
+  <p style="margin-top:0.75rem;opacity:0.4;">© 2026 Bookstore Bar Crawl NYC &nbsp;·&nbsp; bookstorebarcrawl.com</p>
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  function handleSignup() {
-    const email = document.getElementById('email-input').value;
-    if (!email || !email.includes('@')) return;
-    document.getElementById('signup-confirm').style.display = 'block';
-    document.querySelector('.signup-form').style.display = 'none';
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.07 });
-
-  d
+  const signupForm = document.getElementById('signup-form');
+  if (signupForm) {
+    signupForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email-input').value;
+      if (!email || !email.includes('@')) return;
+      try {
+        const response = await fetch('https://formspree.io/f/xyknqkrr', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ email: email })
+        });
+        if (response.ok) {
+          document.getElementById('signup-confirm').style.display = 'block';
+          signupForm.style.display = 'none';
+        }
+      } catch(err) {
+        document.getElementById('signup-confirm').style.display = 'block';
+        signupForm.style.display = 'non
