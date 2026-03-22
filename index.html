@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bookstore Bar Crawl NYC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IM+Fell+English:ital@0;1&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1208;
+      --aged: #f5ede0;
+      --parchment: #ede0cc;
+      --whiskey: #c07a2a;
+      --deep-red: #7a1f1f;
+      --moss: #3a4a2e;
+      --cream: #faf5ec;
+      --faded: #8c7a60;
+      --rule: #c8b090;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: 'IM Fell English', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ---- GRAIN OVERLAY ---- */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
+    }
+
+    /* ---- MASTHEAD ---- */
+    header {
+      position: relative;
+      background-color: var(--ink);
+      color: var(--aged);
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+      border-bottom: 4px double var(--whiskey);
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, #2e1e0a 0%, var(--ink) 70%);
+      z-index: 0;
+    }
+
+    .header-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .masthead-rule {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      color: var(--whiskey);
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    .masthead-rule span { flex: 1; height: 1px; background: var(--whiskey); opacity: 0.5; }
+
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      color: var(--aged);
+      margin-bottom: 0.4rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--whiskey);
+    }
+
+    .subtitle {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: var(--parchment);
+      opacity: 0.75;
+      margin-bottom: 1.5rem;
+    }
+
+    .header-byline {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      color: var(--faded);
+      text-transform: uppercase;
+    }
+
+    /* ---- NAV ---- */
+    nav {
+      background-color: var(--parchment);
+      border-bottom: 2px solid var(--rule);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+
+    nav ul li a {
+      display: block;
+      padding: 0.8rem 1.4rem;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      border-right: 1px solid var(--rule);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    nav ul li:first-child a { border-left: 1px solid var(--rule); }
+
+    nav ul li a:hover {
+      background-color: var(--ink);
+      color: var(--aged);
+    }
+
+    /* ---- INTRO LEDE ---- */
+    .lede {
+      max-width: 720px;
+      margin: 3.5rem auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+
+    .lede p {
+      font-size: 1.18rem;
+      line-height: 1.85;
+      color: var(--ink);
+    }
+
+    .lede p + p { margin-top: 1rem; }
+
+    .drop-cap::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem;
+      font-weight: 900;
+      float: left;
+      line-height: 0.75;
+      margin: 0.1em 0.1em 0 0;
+      color: var(--whiskey);
+    }
+
+    /* ---- SECTION HEADERS ---- */
+    .neighborhood-section {
+      max-width: 1100px;
+      margin: 0 auto 4rem;
+      padding: 0 2rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      padding-top: 2rem;
+      border-top: 3px solid var(--ink);
+    }
+
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 900;
+      white-space: nowrap;
+      color: var(--ink);
+    }
+
+    .section-header .rule-line {
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    .section-header .neighborhood-tag {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--faded);
+      white-space: nowrap;
+    }
+
+    /* ---- VENUE GRID ---- */
+    .venue-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2px;
+      border: 2px solid var(--ink);
+    }
+
+    /* ---- VENUE CARD ---- */
+    .venue-card {
+      background: var(--cream);
+      padding: 1.8rem 1.6rem;
+      border: 1px solid var(--rule);
+      position: relative;
+      transition: background 0.25s;
+      cursor: default;
+    }
+
+    .venue-card:hover {
+      background: var(--aged);
+    }
+
+    .venue-type-badge {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.2em 0.6em;
+      border: 1px solid currentColor;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+    }
+
+    .badge-bar { color: var(--deep-red); }
+    .badge-book { color: var(--moss); }
+
+    .venue-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.35rem;
+      color: var(--ink);
+    }
+
+    .venue-address {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+      color: var(--faded);
+      margin-bottom: 0.9rem;
+      letter-spacing: 0.05em;
+    }
+
+    .venue-bio {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: #3a2e1e;
+    }
+
+    .venue-card .notable {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed var(--rule);
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+      color: var(--whiskey);
+      letter-spacing: 0.05em;
+    }
+
+    .venue-card .notable::before {
+      content: '✦ Notable: ';
+      font-weight: 700;
+    }
+
+    /* ---- MAP CTA ---- */
+    .map-cta {
+      background-color: var(--ink);
+      color: var(--aged);
+      padding: 4rem 2rem;
+      text-align: center;
+      margin: 4rem 0 0;
+      border-top: 4px double var(--whiskey);
+    }
+
+    .map-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 900;
+      font-style: italic;
+      margin-bottom: 1rem;
+      color: var(--aged);
+    }
+
+    .map-cta p {
+      max-width: 520px;
+      margin: 0 auto 2rem;
+      opacity: 0.75;
+      font-style: italic;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      border: 2px solid var(--whiskey);
+      color: var(--aged);
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--whiskey);
+      color: var(--ink);
+    }
+
+    /* ---- EMAIL SIGNUP ---- */
+    .signup {
+      background: var(--parchment);
+      border-top: 2px solid var(--rule);
+      border-bottom: 2px solid var(--rule);
+      padding: 3.5rem 2rem;
+      text-align: center;
+    }
+
+    .signup h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .signup p {
+      font-style: italic;
+      color: var(--faded);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .signup form {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .signup input[type="email"] {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--ink);
+      border-right: none;
+      background: var(--cream);
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.85rem;
+      color: var(--ink);
+      outline: none;
+    }
+
+    .signup button {
+      padding: 0.75rem 1.25rem;
+      background: var(--ink);
+      color: var(--aged);
+      border: 2px solid var(--ink);
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .signup button:hover { background: var(--deep-red); border-color: var(--deep-red); }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background-color: var(--ink);
+      color: var(--faded);
+      text-align: center;
+      padding: 2.5rem 2rem;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+    }
+
+    footer a { color: var(--whiskey); text-decoration: none; }
+    footer .footer-rule { margin: 0.75rem 0; border-color: #3a2e1e; }
+    footer .quote {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--parchment);
+      opacity: 0.5;
+      margin-bottom: 1rem;
+    }
+
+    /* ---- DIVIDER ORNAMENT ---- */
+    .ornament {
+      text-align: center;
+      color: var(--whiskey);
+      font-size: 1.2rem;
+      letter-spacing: 0.5em;
+      margin: 2rem 0;
+      opacity: 0.6;
+    }
+
+    /* ---- ANIMATIONS ---- */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .venue-card {
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .venue-card:nth-child(1) { animation-delay: 0.05s; }
+    .venue-card:nth-child(2) { animation-delay: 0.1s; }
+    .venue-card:nth-child(3) { animation-delay: 0.15s; }
+    .venue-card:nth-child(4) { animation-delay: 0.2s; }
+    .venue-card:nth-child(5) { animation-delay: 0.25s; }
+    .venue-card:nth-child(6) { animation-delay: 0.3s; }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 600px) {
+      .venue-grid { grid-template-columns: 1fr; }
+      nav ul li a { padding: 0.7rem 0.9rem; font-size: 0.65rem; }
+      .signup form { flex-direction: column; }
+      .signup input[type="email"] { border-right: 2px solid var(--ink); border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <div class="masthead-rule">
+        <span></span>
+        Est. New York City
+        <span></span>
+      </div>
+      <h1>Bookstore <em>&amp;</em> Bar Crawl</h1>
+      <p class="subtitle">A Literary Drinker's Guide to New York City</p>
+      <div class="masthead-rule" style="margin-top:1rem; margin-bottom:0.5rem;">
+        <span></span>
+        ✦ ✦ ✦
+        <span></span>
+      </div>
+      <p class="header-byline">Books · Bars · Boroughs</p>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav>
+    <ul>
+      <li><a href="#greenwich">Greenwich Village</a></li>
+      <li><a href="#eastvillage">East Village</a></li>
+      <li><a href="#midtown">Midtown</a></li>
+      <li><a href="#plan">Plan Your Crawl</a></li>
+    </ul>
+  </nav>
+
+  <!-- LEDE -->
+  <div class="lede">
+    <p class="drop-cap">New York City has always been a place where writers drink and drinkers write. From the whiskey-soaked booths where O. Henry penned his masterpieces, to the dim back rooms where Kerouac and Ginsberg argued about God and jazz — the city's literary history is inseparable from its bars. And its bookstores are cathedrals.</p>
+    <p>This is your guide to both. A crawl through the neighborhoods, the shelves, and the stools where New York's greatest stories were told — or, at least, started.</p>
+  </div>
+
+  <div class="ornament">— ✦ —</div>
+
+  <!-- GREENWICH VILLAGE -->
+  <section class="neighborhood-section" id="greenwich">
+    <div class="section-header">
+      <h2>Greenwich & West Village</h2>
+      <div class="rule-line"></div>
+      <span class="neighborhood-tag">The Bohemian Quarter</span>
+    </div>
+    <div class="venue-grid">
+
+      <div class="venue-card">
+        <span class="venue-type-badge badge-bar">Bar</span>
+        <h3>White Horse Tavern</h3>
+        <p class="venue-address">567 Hudson St, New York, NY 10014</p>
+        <p class="venue-bio">Established in 1880, it became a 1950s bohemian hub — most famous as the place where Welsh poet Dylan Thomas reportedly drank his final shots of whiskey before his death in 1953. James Baldwin, Jack Kerouac, and Norman Mailer were regulars.</p>
+        <p class="notable">Dylan Thomas · Jack Kerouac · Norman Mailer</p>
+      </div>
+
+      <div class="venue-card">
+        <span class="venue-type-badge badge-bar">Bar</span>
+        <h3>Minetta Tavern</h3>
+        <p class="venue-address">113 MacDougal St, New York, NY 10012</p>
+        <p class="venue-bio">A favorite of the Lost Generation and the Beats. Hemingway, Ezra Pound, and E.E. Cummings were regulars here. Legend says writer Joe Gould — subject of Joseph Mitchell's <em>Joe Gould's Secret</em> — lived out of the booths and received his mail here.</p>
+        <p class="notable">Hemingway · Ezra Pound · E.E. Cummings</p>
+      </div>
+
+      <div class="venue-card">
+        <span class="venue-type-badge badge-bar">Bar</span>
+        <h3>Kettle of Fish</h3>
+        <p class="venue-address">59 Christopher St, New York, NY 10014</p>
+        <p class="venue-bio">The epicenter of the Beat Generation. Jack Kerouac was famously photographed here, and it served as a meeting ground for Allen Ginsberg and a young Bob Dylan, who found his voice in these smoky rooms.</p>
+        <p class="notable">Jack Kerouac · Allen Ginsberg · Bob Dylan</p>
+      </div>
+
+      <div class="venue-card">
+        <span class="venue-type-badge badge-book">Bookstore</span>
+        <h3>Three Lives & Company</h3>
+        <p class="venue-address">154 W 10th St, New York, NY 10014</p>
+        <p class="venue-bio">Named after the Gertrude Stein novel, this beloved corner bookstore is a sanctuary for writers and publishing professionals. Known for its curated selection and irreplaceable old New York literary atmosphere. One of the city's great institutions.</p>
+        <p class="notable">Named after Gertrude Stein · Est. 1968</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EAST VILLAGE -->
+  <section class="neighborhood-section" id="eastvillage">
+    <div class="section-header">
+      <h2>East Village & Gramercy</h2>
+      <div class="rule-line"></div>
+      <span class="neighborhood-tag">Old New York</span>
+    </div>
+    <div class="venue-grid">
+
+      <div class="venue-card">
+        <span class="venue-type-badge badge-bar">Bar</span>
+        <h3>McSorley's Old Ale House</h3>
+        <p class="venue-address">15 E 7th St, New York, NY 10003</p>
+        <p class="venue-bio">Opened in 1854, one of the city's oldest bars. Immortalized by Joseph Mitchell in his legendary New Yorker profiles. E.E. Cummings was a frequent patron; the bar famously didn't allow women until 1970 — a history documented in countless essays and lawsuits.</p>
+        <p class="notable">E.E. Cummings · Joseph Mitchell · Est. 1854</p>
+      </div>
+
+      <div class="venue-card">
+        <span class="venue-type-badge badge-bar">Bar</span>
+        <h3>KGB Bar</h3>
+        <p class="venue-address">85 E 4th St, New York, NY 10003</p>
+        <p class="venue-bio">Located in a former Ukrainian social club, this dim Soviet-themed bar is the modern heartbeat of the NYC literary scene. Its legendary KGB Reading Series has featured Pulitzer winners and debut novelists alike — the city's best place to hear a story told aloud.</p>
+        <p class="notable">KGB Reading Series · Still active today</p>
+      </div>
+
+      <div class="venue-card">
+        <span class="venue-type-badge badge-bar">Bar</span>
+        <h3>Pete's Tavern</h3>
+        <p class="venue-address">129 E 18th St, New York, NY 10003</p>
+        <p class="venue-bio">A Gramercy landmark since 1864. Author O. Henry was a regular and famously wrote his masterpiece <em>"The Gift of the Magi"</em> in the front booth — the bar appears in his stories under the pseudonym "Healy's." The booth is still there.</p>
+        <p class="notable">O. Henry · "The Gift of the Magi" · Est. 1864</p>
+      </div>
+
+      <div class="venue-card">
+        <span class="venue-type-badge badge-book">Bookstore</span>
+        <h3>The Strand</h3>
+        <p class="venue-address">828 Broadway, New York, NY 10003</p>
+        <p class="venue-bio">Famed for its "18 miles of books," this is the undisputed king of NYC bookstores. Since 1927 it has been the primary source for used, rare, and new titles for the city's intellectual elite. To visit New York without visiting the Strand is to have missed the point.</p>
+        <p class="notable">18 Miles of Books · Est. 1927</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MIDTOWN -->
+  <section class="neighborhood-section" id="midtown">
+    <div class="section-header">
+      <h2>Midtown & Upper East Side</h2>
+      <div class="rule-line"></div>
+      <span class="neighborhood-tag">The Literary Establishment</span>
+    </div>
+    <div class="venue-grid">
+
+      <div class="venue-card">
+        <span class="venue-type-badge badge-bar">Bar</span>
+        <h3>Blue Bar at The Algonquin</h3>
+        <p class="venue-address">59 W 44th St, New York, NY 10036</p>
+        <p class="venue-bio">Home to the Algonquin Round Table of the 1920s — Dorothy Parker, Robert Benchley, and George S. Kaufman met here daily for lunch and devastating wit, eventually founding <em>The New Yorker</em> magazine. The hotel cat's lineage continues to this day.</p>
+        <p class="notable">Dorothy Parker · The New Yorker · Round Table</p>
+      </div>
+
+      <div class="venue-card">
+        <span class="venue-type-badge badge-bar">Bar</span>
+        <h3>Bemelmans Bar at The Carlyle</h3>
+        <p class="venue-address">35 E 76th St, New York, NY 10021</p>
+        <p class="venue-bio">Named after Ludwig Bemelmans, author and illustrator of the <em>Madeline</em> children's books. He painted the whimsical Central Park murals covering the walls — in exchange for room and board at the hotel. The murals remain one of New York's great secrets.</p>
+        <p class="notable">Ludwig Bemelmans · Madeline · Original murals</p>
+      </div>
+
+      <div class="venue-card">
+        <span class="venue-type-badge badge-book">Bookstore</span>
+        <h3>Argosy Book Store</h3>
+        <p class="venue-address">116 E 59th St, New York, NY 10022</p>
+        <p class="venue-bio">Established in 1925 and still family-owned, this six-story townhouse specializes in antiquarian books, rare maps, and autographs. A genuine time capsule of the city's scholarly history, hiding in plain sight on the Upper East Side.</p>
+        <p class="notable">Antiquarian · Rare Maps · Est. 1925</p>
+      </div>
+
+      <div class="venue-card">
+        <span class="venue-type-badge badge-book">Bookstore</span>
+        <h3>The Drama Book Shop</h3>
+        <p class="venue-address">266 W 39th St, New York, NY 10018</p>
+        <p class="venue-bio">A hundred-year-old institution for playwrights and theater lovers. Famously saved from closing by Lin-Manuel Miranda, it remains the primary resource for scripts and theatrical literature in the city — and one of Broadway's most beloved gathering places.</p>
+        <p class="notable">Saved by Lin-Manuel Miranda · Scripts & Theater</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PLAN YOUR CRAWL CTA -->
+  <div class="map-cta" id="plan">
+    <h2>Plan Your Crawl</h2>
+    <p>Use Google Maps to chart your route between venues. We recommend starting with a drink, ending with a book, and leaving time for both.</p>
+    <a href="https://maps.google.com/?q=White+Horse+Tavern+NYC" target="_blank" class="btn">Open in Google Maps</a>
+  </div>
+
+  <!-- EMAIL SIGNUP -->
+  <div class="signup">
+    <h2>Future Crawls & Updates</h2>
+    <p>Get notified when we organize the next group crawl through the stacks and stools of New York.</p>
+    <form onsubmit="handleSignup(event)">
+      <input type="email" placeholder="your@email.com" required />
+      <button type="submit">Sign Up</button>
+    </form>
+    <p id="signup-confirm" style="display:none; margin-top:1rem; color:var(--moss);">✓ You're on the list.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="quote">"In wine there is wisdom, in beer there is freedom, in water there is bacteria." — Benjamin Franklin</p>
+    <hr class="footer-rule" />
+    <p>
+      <a href="mailto:nicholasbeck+books@gmail.com">Contact</a>
+      &nbsp;·&nbsp;
+      <a href="#">nicholasbeck+books@gmail.com</a>
+    </p>
+    <p style="margin-top:0.75rem; opacity:0.4;">© 2024 Bookstore Bar Crawl NYC &nbsp;·&nbsp; bookstorebarcrawl.com</p>
+  </footer>
+
+  <script>
+    function handleSignup(e) {
+      e.preventDefault();
+      document.getElementById('signup-confirm').style.display = 'block';
+      e.target.style.display = 'none';
+    }
+
+    // Scroll-triggered fade for venue sections
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.neighborhood-section').forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(30px)';
+      section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(section);
+    });
+  </script>
+
+</body>
+</html>
