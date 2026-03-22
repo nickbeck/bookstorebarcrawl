@@ -141,15 +141,15 @@
     /* SECTIONS */
     .neighborhood-section {
       max-width: 1100px;
-      margin: 0 auto 4rem;
+      margin: 0 auto 2.5rem;
       padding: 0 2rem;
     }
     .section-header {
       display: flex;
       align-items: center;
       gap: 1.5rem;
-      margin-bottom: 2rem;
-      padding-top: 2rem;
+      margin-bottom: 1.25rem;
+      padding-top: 1.5rem;
       border-top: 3px solid var(--ink);
     }
     .section-header h2 {
@@ -171,7 +171,7 @@
     /* VENUE GRID */
     .venue-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 2px;
       border: 2px solid var(--ink);
     }
@@ -179,7 +179,7 @@
     /* VENUE CARD */
     .venue-card {
       background: var(--cream);
-      padding: 1.8rem 1.6rem;
+      padding: 1.2rem 1.3rem;
       border: 1px solid var(--rule);
       transition: background 0.25s;
     }
@@ -192,27 +192,37 @@
       padding: 0.2em 0.6em;
       border: 1px solid currentColor;
       display: inline-block;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.45rem;
     }
     .badge-bar { color: var(--deep-red); }
     .badge-book { color: var(--moss); }
     .venue-card h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.22rem;
+      font-size: 1.15rem;
       font-weight: 700;
       line-height: 1.2;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.2rem;
     }
     .venue-address {
       font-family: 'Courier Prime', monospace;
       font-size: 0.72rem;
       color: var(--faded);
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.55rem;
     }
-    .venue-bio { font-size: 0.92rem; line-height: 1.65; color: #3a2e1e; }
+    .venue-address a {
+      color: var(--faded);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--rule);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .venue-address a:hover {
+      color: var(--whiskey);
+      border-color: var(--whiskey);
+    }
+    .venue-bio { font-size: 0.88rem; line-height: 1.55; color: #3a2e1e; }
     .notable {
-      margin-top: 1rem;
-      padding-top: 0.75rem;
+      margin-top: 0.65rem;
+      padding-top: 0.5rem;
       border-top: 1px dashed var(--rule);
       font-family: 'Courier Prime', monospace;
       font-size: 0.72rem;
@@ -226,7 +236,7 @@
       color: var(--whiskey);
       font-size: 1.2rem;
       letter-spacing: 0.5em;
-      margin: 2rem 0;
+      margin: 1.2rem 0;
       opacity: 0.6;
     }
 
@@ -349,7 +359,7 @@
     /* MAP */
     .map-section {
       max-width: 1100px;
-      margin: 0 auto 4rem;
+      margin: 0 auto 2.5rem;
       padding: 0 2rem;
     }
     .map-embed {
@@ -451,10 +461,56 @@
     .venue-card:nth-child(4) { animation-delay: 0.19s; }
     .venue-card:nth-child(5) { animation-delay: 0.24s; }
 
-    /* RESPONSIVE */
+    /* BOROUGH DIVIDER */
+    .borough-divider {
+      background: var(--ink);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 4px double var(--whiskey);
+      border-bottom: 4px double var(--whiskey);
+      margin: 1.2rem 0;
+    }
+    .borough-divider-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .borough-rule { flex: 1; height: 1px; background: var(--whiskey); opacity: 0.4; }
+    .borough-title { text-align: center; }
+    .borough-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--whiskey);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .borough-divider h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      font-style: italic;
+      color: var(--aged);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .borough-sub {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--faded);
+      display: block;
+    }
+
+    /* COMING SOON BADGE */
+    .badge-new { color: #b8860b; }
+
+
     @media (max-width: 640px) {
-      .venue-grid, .routes-grid { grid-template-columns: 1fr; }
-      nav ul li a { padding: 0.65rem 0.7rem; font-size: 0.61rem; }
+      .venue-grid, .routes-grid { grid-template-columns: 1fr; }      nav ul li a { padding: 0.65rem 0.7rem; font-size: 0.61rem; }
       .origin-block { padding: 2rem 1.5rem; }
       .signup-form { flex-direction: column; }
       .signup-form input[type="email"] { border-right: 2px solid var(--ink); border-bottom: none; }
@@ -478,17 +534,23 @@
 <!-- NAV -->
 <nav>
   <ul>
+    <li><a href="#manhattan">↓ Manhattan</a></li>
     <li><a href="#greenwich">Greenwich Village</a></li>
     <li><a href="#eastvillage">East Village</a></li>
     <li><a href="#midtown">Midtown</a></li>
     <li><a href="#flatiron">Flatiron</a></li>
+    <li><a href="#lesside">LES & NoMad</a></li>
+    <li><a href="#brooklyn">↓ Brooklyn</a></li>
+    <li><a href="#boerumhill">Boerum Hill</a></li>
+    <li><a href="#crownheights">Crown Heights</a></li>
+    <li><a href="#williamsburg">Williamsburg</a></li>
     <li><a href="#routes">Crawl Routes</a></li>
     <li><a href="#map">Map</a></li>
   </ul>
 </nav>
 
 <!-- LEDE -->
-<div class="lede">
+<div class="lede" id="manhattan">
   <p class="drop-cap">New York City has always been a place where writers drink and drinkers write. From the whiskey-soaked booths where O. Henry penned his masterpieces, to the dim back rooms where Kerouac and Ginsberg argued about God and jazz — the city's literary history is inseparable from its bars. And its bookstores are cathedrals.</p>
   <p>This is your guide to both. A crawl through the neighborhoods, the shelves, and the stools where New York's greatest stories were told — or, at least, started.</p>
 </div>
@@ -506,28 +568,28 @@
     <div class="venue-card">
       <span class="venue-type-badge badge-bar">Bar</span>
       <h3>White Horse Tavern</h3>
-      <p class="venue-address">567 Hudson St, New York, NY 10014</p>
+      <p class="venue-address"><a href="https://maps.google.com/?q=White+Horse+Tavern+New+York" target="_blank" rel="noopener">567 Hudson St, New York, NY 10014</a></p>
       <p class="venue-bio">Established in 1880, it became a 1950s bohemian hub — most famous as the place where Welsh poet Dylan Thomas reportedly drank his final shots of whiskey before his death in 1953. James Baldwin, Jack Kerouac, and Norman Mailer were regulars. Kerouac was famously thrown out on several occasions, and reportedly found the words "Go home Jack" written in the men's room.</p>
       <p class="notable">Dylan Thomas · Kerouac · Norman Mailer · James Baldwin</p>
     </div>
     <div class="venue-card">
       <span class="venue-type-badge badge-bar">Bar</span>
       <h3>Minetta Tavern</h3>
-      <p class="venue-address">113 MacDougal St, New York, NY 10012</p>
+      <p class="venue-address"><a href="https://maps.google.com/?q=Minetta+Tavern+New+York" target="_blank" rel="noopener">113 MacDougal St, New York, NY 10012</a></p>
       <p class="venue-bio">A favorite of the Lost Generation and the Beats. Hemingway, Ezra Pound, and E.E. Cummings were regulars. Legend says writer Joe Gould — subject of Joseph Mitchell's <em>Joe Gould's Secret</em> — lived out of the booths and received his mail here.</p>
       <p class="notable">Hemingway · Ezra Pound · E.E. Cummings</p>
     </div>
     <div class="venue-card">
       <span class="venue-type-badge badge-bar">Bar</span>
       <h3>Kettle of Fish</h3>
-      <p class="venue-address">59 Christopher St, New York, NY 10014</p>
+      <p class="venue-address"><a href="https://maps.google.com/?q=Kettle+of+Fish+Bar+New+York" target="_blank" rel="noopener">59 Christopher St, New York, NY 10014</a></p>
       <p class="venue-bio">The epicenter of the Beat Generation. Jack Kerouac was famously photographed here, and it served as a meeting ground for Allen Ginsberg and a young Bob Dylan, who found his voice in these smoky rooms before becoming a legend.</p>
       <p class="notable">Jack Kerouac · Allen Ginsberg · Bob Dylan</p>
     </div>
     <div class="venue-card">
       <span class="venue-type-badge badge-book">Bookstore</span>
       <h3>Three Lives & Company</h3>
-      <p class="venue-address">154 W 10th St, New York, NY 10014</p>
+      <p class="venue-address"><a href="https://maps.google.com/?q=Three+Lives+%26+Company+Bookstore+New+York" target="_blank" rel="noopener">154 W 10th St, New York, NY 10014</a></p>
       <p class="venue-bio">Named after the Gertrude Stein novel, this beloved corner bookstore is a sanctuary for local writers and publishing professionals. Known for its curated selection and irreplaceable old New York literary atmosphere — a place where books are still chosen with genuine care.</p>
       <p class="notable">Named after Gertrude Stein · Est. 1968</p>
     </div>
@@ -545,28 +607,28 @@
     <div class="venue-card">
       <span class="venue-type-badge badge-bar">Bar</span>
       <h3>McSorley's Old Ale House</h3>
-      <p class="venue-address">15 E 7th St, New York, NY 10003</p>
+      <p class="venue-address"><a href="https://maps.google.com/?q=McSorley%27s+Old+Ale+House+New+York" target="_blank" rel="noopener">15 E 7th St, New York, NY 10003</a></p>
       <p class="venue-bio">Opened in 1854, one of the city's oldest bars. Immortalized by Joseph Mitchell in his legendary New Yorker profiles. E.E. Cummings was a frequent patron — he wrote <em>"i was sitting in mcsorley's"</em> in 1923. The bar famously didn't admit women until 1970.</p>
       <p class="notable">E.E. Cummings · Joseph Mitchell · Est. 1854</p>
     </div>
     <div class="venue-card">
       <span class="venue-type-badge badge-bar">Bar</span>
       <h3>KGB Bar</h3>
-      <p class="venue-address">85 E 4th St, New York, NY 10003</p>
+      <p class="venue-address"><a href="https://maps.google.com/?q=KGB+Bar+New+York" target="_blank" rel="noopener">85 E 4th St, New York, NY 10003</a></p>
       <p class="venue-bio">Located in a former Ukrainian social club, this dim Soviet-themed bar is the modern heartbeat of the NYC literary scene. Its KGB Reading Series has hosted Pulitzer winners and debut novelists alike — the city's finest place to hear fiction read aloud.</p>
       <p class="notable">KGB Reading Series · Still active today</p>
     </div>
     <div class="venue-card">
       <span class="venue-type-badge badge-bar">Bar</span>
       <h3>Pete's Tavern</h3>
-      <p class="venue-address">129 E 18th St, New York, NY 10003</p>
+      <p class="venue-address"><a href="https://maps.google.com/?q=Pete%27s+Tavern+New+York" target="_blank" rel="noopener">129 E 18th St, New York, NY 10003</a></p>
       <p class="venue-bio">A Gramercy landmark since 1864. O. Henry famously wrote <em>"The Gift of the Magi"</em> in the front booth — the bar appears in his stories under the name "Healy's." Ludwig Bemelmans also wrote the first <em>Madeline</em> book here, reportedly on the back of a menu.</p>
       <p class="notable">O. Henry · Ludwig Bemelmans · Est. 1864</p>
     </div>
     <div class="venue-card">
       <span class="venue-type-badge badge-book">Bookstore</span>
       <h3>The Strand</h3>
-      <p class="venue-address">828 Broadway, New York, NY 10003</p>
+      <p class="venue-address"><a href="https://maps.google.com/?q=The+Strand+Bookstore+New+York" target="_blank" rel="noopener">828 Broadway, New York, NY 10003</a></p>
       <p class="venue-bio">Famed for its "18 miles of books," this is the undisputed king of NYC bookstores. Since 1927 it has been the primary source for used, rare, and new titles for the city's intellectual elite. To visit New York without visiting the Strand is to have missed the point.</p>
       <p class="notable">18 Miles of Books · Est. 1927</p>
     </div>
@@ -584,28 +646,28 @@
     <div class="venue-card">
       <span class="venue-type-badge badge-bar">Bar</span>
       <h3>Blue Bar at The Algonquin</h3>
-      <p class="venue-address">59 W 44th St, New York, NY 10036</p>
+      <p class="venue-address"><a href="https://maps.google.com/?q=Algonquin+Hotel+Blue+Bar+New+York" target="_blank" rel="noopener">59 W 44th St, New York, NY 10036</a></p>
       <p class="venue-bio">Home to the Algonquin Round Table of the 1920s — Dorothy Parker, Robert Benchley, and George S. Kaufman met here daily. Harold Ross won so much money from fellow members in a poker game that he used it to found <em>The New Yorker</em> magazine.</p>
       <p class="notable">Dorothy Parker · The New Yorker · Round Table</p>
     </div>
     <div class="venue-card">
       <span class="venue-type-badge badge-bar">Bar</span>
       <h3>Bemelmans Bar at The Carlyle</h3>
-      <p class="venue-address">35 E 76th St, New York, NY 10021</p>
+      <p class="venue-address"><a href="https://maps.google.com/?q=Bemelmans+Bar+The+Carlyle+New+York" target="_blank" rel="noopener">35 E 76th St, New York, NY 10021</a></p>
       <p class="venue-bio">Named after Ludwig Bemelmans, author and illustrator of the <em>Madeline</em> children's books. He painted the whimsical Central Park murals that cover all four walls — in exchange for room and board at the hotel. One of New York's most cherished secrets.</p>
       <p class="notable">Ludwig Bemelmans · Madeline · Original murals</p>
     </div>
     <div class="venue-card">
       <span class="venue-type-badge badge-book">Bookstore</span>
       <h3>Argosy Book Store</h3>
-      <p class="venue-address">116 E 59th St, New York, NY 10022</p>
+      <p class="venue-address"><a href="https://maps.google.com/?q=Argosy+Book+Store+New+York" target="_blank" rel="noopener">116 E 59th St, New York, NY 10022</a></p>
       <p class="venue-bio">Established in 1925 and still family-owned, this six-story townhouse specializes in antiquarian books, rare maps, and autographs. A genuine time capsule of the city's scholarly history — hiding in plain sight since the Jazz Age.</p>
       <p class="notable">Antiquarian · Rare Maps · Est. 1925</p>
     </div>
     <div class="venue-card">
       <span class="venue-type-badge badge-book">Bookstore</span>
       <h3>The Drama Book Shop</h3>
-      <p class="venue-address">266 W 39th St, New York, NY 10018</p>
+      <p class="venue-address"><a href="https://maps.google.com/?q=The+Drama+Book+Shop+New+York" target="_blank" rel="noopener">266 W 39th St, New York, NY 10018</a></p>
       <p class="venue-bio">A hundred-year-old institution for playwrights and theater lovers. Famously saved from closing by Lin-Manuel Miranda, it remains the primary resource for scripts and theatrical literature in the city — and one of Broadway's most beloved gathering places.</p>
       <p class="notable">Saved by Lin-Manuel Miranda · Scripts & Theater</p>
     </div>
@@ -623,16 +685,166 @@
     <div class="venue-card">
       <span class="venue-type-badge badge-bar">Bar</span>
       <h3>Oscar Wilde</h3>
-      <p class="venue-address">45 W 27th St, New York, NY 10001</p>
+      <p class="venue-address"><a href="https://maps.google.com/?q=Oscar+Wilde+Bar+New+York" target="_blank" rel="noopener">45 W 27th St, New York, NY 10001</a></p>
       <p class="venue-bio">A grand homage to the Irish writer, poet, and playwright whose wit remains unmatched. Beyond paying tribute to the man who once said "I have the simplest tastes — I am always satisfied with the best," the bar claims a remarkable physical distinction: at 118.5 feet, it is home to New York City's longest bar. The Victorian opulence — gilded ceilings, velvet, and portraits of the great man himself — feels entirely appropriate.</p>
       <p class="notable">Homage to Oscar Wilde · NYC's Longest Bar — 118.5 ft</p>
     </div>
     <div class="venue-card">
       <span class="venue-type-badge badge-bar">Bar</span>
       <h3>Old Town Bar</h3>
-      <p class="venue-address">45 E 18th St, New York, NY 10003</p>
+      <p class="venue-address"><a href="https://maps.google.com/?q=Old+Town+Bar+New+York" target="_blank" rel="noopener">45 E 18th St, New York, NY 10003</a></p>
       <p class="venue-bio">Dating to 1892 with its original pressed-tin ceilings, mahogany bar, and tile floors still intact, Old Town is what Pulitzer Prize-winning author Frank McCourt — of <em>Angela's Ashes</em> — called "the king of New York bars — where you can still talk." Nobel Prize-winning poet Seamus Heaney considered it his favorite bar in the city and visited whenever he was in town. Signed book jackets from McCourt, Billy Collins, Nick Hornby, and Christopher Hitchens line the walls. Andy Warhol was once a regular too.</p>
       <p class="notable">Frank McCourt · Seamus Heaney · Billy Collins · Est. 1892</p>
+    </div>
+  </div>
+</section>
+
+<!-- LOWER EAST SIDE & NOMAD — NEW MANHATTAN BOOKSTORES -->
+<section class="neighborhood-section" id="lesside">
+  <div class="section-header">
+    <h2>Lower East Side & NoMad</h2>
+    <div class="rule-line"></div>
+    <span class="neighborhood-tag">New Wave Manhattan Bookstores</span>
+  </div>
+  <div class="venue-grid">
+    <div class="venue-card">
+      <span class="venue-type-badge badge-book">Bookstore</span>
+      <h3>P&T Knitwear</h3>
+      <p class="venue-address"><a href="https://maps.google.com/?q=P%26T+Knitwear+Bookstore+180+Orchard+St+New+York" target="_blank" rel="noopener">180 Orchard St, New York, NY 10002</a></p>
+      <p class="venue-bio">The largest independent bookstore on the Lower East Side, named after owner Bradley Tusk's grandfather's menswear shop that stood around the corner on Allen Street since 1952. A genuine community institution: 10,000+ hand-curated titles, an amphitheater-style event space for 85, a full cafe, and a state-of-the-art podcast studio facing the street — free and open to the public to use. One of the most inventive bookstore spaces built in New York in a generation.</p>
+      <p class="notable">Free Podcast Studio · 10,000+ Titles · LES Institution · Est. 2022</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-book">Bookstore</span>
+      <h3>Rizzoli Bookstore</h3>
+      <p class="venue-address"><a href="https://maps.google.com/?q=Rizzoli+Bookstore+1133+Broadway+New+York" target="_blank" rel="noopener">1133 Broadway, New York, NY 10010</a></p>
+      <p class="venue-bio">One of New York's most beautiful bookstores, established in 1964 on Fifth Avenue and now in a stunning NoMad location. Specializing in illustrated books on architecture, interior design, fashion, photography, and the fine arts, as well as literature and foreign language titles. Cast iron chandeliers, ornately decorated vaulting, and regular author events make it a destination for distinguished book lovers from around the world.</p>
+      <p class="notable">Est. 1964 · Art & Architecture · Cast Iron Chandeliers</p>
+    </div>
+  </div>
+</section>
+<div class="borough-divider" id="brooklyn">
+  <div class="borough-divider-inner">
+    <div class="borough-rule"></div>
+    <div class="borough-title">
+      <span class="borough-label">The Borough of</span>
+      <h2>Brooklyn</h2>
+      <span class="borough-sub">Where Today's Writers Actually Drink</span>
+    </div>
+    <div class="borough-rule"></div>
+  </div>
+</div>
+
+<div class="lede" style="margin-top:2rem;">
+  <p>If Manhattan's literary bars are about history — the booths where the great ones drank — Brooklyn's are about what's happening right now. The borough has become the true center of New York's working literary community: the writers who live here, the reading series that shape what gets published, and the bookstores that are genuinely part of their neighborhoods.</p>
+</div>
+
+<!-- BOERUM HILL & PARK SLOPE -->
+<section class="neighborhood-section" id="boerumhill">
+  <div class="section-header">
+    <h2>Boerum Hill, Park Slope & Red Hook</h2>
+    <div class="rule-line"></div>
+    <span class="neighborhood-tag">Literary Brooklyn Heartland</span>
+  </div>
+  <div class="venue-grid">
+    <div class="venue-card">
+      <span class="venue-type-badge badge-bar">Bar</span>
+      <h3>Union Hall</h3>
+      <p class="venue-address"><a href="https://maps.google.com/?q=Union+Hall+Brooklyn" target="_blank" rel="noopener">702 Union St, Brooklyn, NY 11215</a></p>
+      <p class="venue-bio">A converted warehouse that feels like a cozy, oversized Victorian library — complete with a stone fireplace, floor-to-ceiling bookshelves, and leather armchairs. A favorite afternoon writing spot for Park Slope's literary community. The basement venue regularly hosts literary-minded comedy and storytelling shows that draw Brooklyn's best writers as both audience and performers.</p>
+      <p class="notable">Storytelling & Literary Comedy · Victorian Library Aesthetic</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-book">Bookstore & Bar</span>
+      <h3>The Center for Fiction</h3>
+      <p class="venue-address"><a href="https://maps.google.com/?q=The+Center+for+Fiction+Brooklyn" target="_blank" rel="noopener">15 Lafayette Ave, Brooklyn, NY 11217</a></p>
+      <p class="venue-bio">A dedicated home for the art of storytelling. The library and bookstore are open to all, but the real draw is the second-floor Cafe & Bar — open to the public and serving literary-themed cocktails in a space literally surrounded by books. One of the few places in New York where you can have a drink, attend a reading, and buy a novel all under one roof.</p>
+      <p class="notable">Literary Cocktails · Readings & Events · Library Bar</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-book">Bookstore</span>
+      <h3>Greenlight Bookstore</h3>
+      <p class="venue-address"><a href="https://maps.google.com/?q=Greenlight+Bookstore+686+Fulton+St+Brooklyn" target="_blank" rel="noopener">686 Fulton St, Brooklyn, NY 11217</a></p>
+      <p class="venue-bio">Fort Greene's beloved independent bookstore, founded in 2009 after owner Jessica Stockton-Bagnulo won a $15,000 grand prize from the Brooklyn Public Library for her business plan. A community institution that hosts the Brooklyn Voices and BAM Unbound literary series, with past events featuring Ta-Nehisi Coates, Junot Díaz, Jhumpa Lahiri, Neil Gaiman, and Zadie Smith. The gold standard for what a neighborhood bookstore should be.</p>
+      <p class="notable">Ta-Nehisi Coates · Neil Gaiman · Zadie Smith · Est. 2009</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-bar">Bar</span>
+      <h3>Sunny's Bar</h3>
+      <p class="venue-address"><a href="https://maps.google.com/?q=Sunny%27s+Bar+253+Conover+St+Brooklyn" target="_blank" rel="noopener">253 Conover St, Brooklyn, NY 11231</a></p>
+      <p class="venue-bio">A Red Hook legend since the 1890s. This waterfront saloon is a ramshackle sanctuary for the old Brooklyn creative class — writers, painters, and musicians drawn by its end-of-the-world atmosphere on the harbor's edge. Its late owner Sunny Balzano was a philosopher and artist who made the bar a beacon for anyone making things that didn't fit anywhere else.</p>
+      <p class="notable">Est. 1890s · Old Brooklyn Creative Class · Waterfront</p>
+    </div>
+  </div>
+</section>
+
+<!-- CROWN HEIGHTS & BED-STUY -->
+<section class="neighborhood-section" id="crownheights">
+  <div class="section-header">
+    <h2>Crown Heights & Bed-Stuy</h2>
+    <div class="rule-line"></div>
+    <span class="neighborhood-tag">The New Literary Center</span>
+  </div>
+  <div class="venue-grid">
+    <div class="venue-card">
+      <span class="venue-type-badge badge-bar">Bar</span>
+      <h3>Franklin Park</h3>
+      <p class="venue-address"><a href="https://maps.google.com/?q=Franklin+Park+Bar+Brooklyn" target="_blank" rel="noopener">618 St Johns Pl, Brooklyn, NY 11238</a></p>
+      <p class="venue-bio">While it's a great beer garden in its own right, Franklin Park is world-renowned in literary circles for the Franklin Park Reading Series — one of the most important contemporary reading series in the country. It has hosted Colson Whitehead, Jennifer Egan, and dozens of the writers who define American fiction today, making it a critical hub for Brooklyn's living literary community.</p>
+      <p class="notable">Franklin Park Reading Series · Colson Whitehead · Jennifer Egan</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-new">Bookstore & Bar — Opening 2026</span>
+      <h3>The North Star Books + Bar</h3>
+      <p class="venue-address"><a href="https://maps.google.com/?q=North+Star+Books+%26+Bar+Brooklyn" target="_blank" rel="noopener">339 Macon St, Brooklyn, NY 11216</a></p>
+      <p class="venue-bio">One of the most anticipated literary openings in New York in years. Co-founded by Pulitzer Prize-winning journalist Nikole Hannah-Jones — creator of <em>The 1619 Project</em> — this space is modeled after the literary salons of the Harlem Renaissance, with an Art Deco aesthetic and a mission to celebrate Black literature and intellectual exchange. Micro-residency apartments upstairs host visiting writers. Opening 2026.</p>
+      <p class="notable">Nikole Hannah-Jones · The 1619 Project · Opening 2026</p>
+    </div>
+  </div>
+</section>
+
+<!-- BUSHWICK & WILLIAMSBURG -->
+<section class="neighborhood-section" id="williamsburg">
+  <div class="section-header">
+    <h2>Williamsburg & Bushwick</h2>
+    <div class="rule-line"></div>
+    <span class="neighborhood-tag">The Indie Frontier</span>
+  </div>
+  <div class="venue-grid">
+    <div class="venue-card">
+      <span class="venue-type-badge badge-book">Bookstore</span>
+      <h3>Molasses Books</h3>
+      <p class="venue-address"><a href="https://maps.google.com/?q=Molasses+Books+Brooklyn" target="_blank" rel="noopener">770 Hart St, Brooklyn, NY 11237</a></p>
+      <p class="venue-bio">A cozy used bookstore that stays open late and serves coffee, beer, and wine alongside its shelves — a rare combination that draws Bushwick's younger writing community long after other shops have closed. Pioneered the beloved "books-for-bar-tab" trade-in system: bring in a stack of used books, drink for free. Low-key, unpretentious, and exactly what a neighborhood bookstore should be.</p>
+      <p class="notable">Books-for-Bar-Tab · Late Night · Used Books + Beer</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-book">Bookstore</span>
+      <h3>The Twisted Spine</h3>
+      <p class="venue-address"><a href="https://maps.google.com/?q=Twisted+Spine+Bookstore+306+Grand+St+Brooklyn" target="_blank" rel="noopener">306 Grand St, Brooklyn, NY 11211</a></p>
+      <p class="venue-bio">New York City's first bookstore dedicated exclusively to horror and dark literature, opened in September 2025 after a wildly successful Kickstarter campaign. A permanent brick-and-mortar location featuring a full espresso cafe with Devoción coffee and a beer and wine bar. The interior goes full dark academia — plush black armchairs, carved shelves in dark-washed wood, chandeliers, and a stamped-tin ceiling. Shelves are organized by horror subgenre: Haunted Houses, Cosmic, Creature Corner. There's a graveyard in the back courtyard.</p>
+      <p class="notable">NYC's First Horror Bookstore · Beer & Wine · Est. 2025</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-book">Bookstore</span>
+      <h3>The Ripped Bodice</h3>
+      <p class="venue-address"><a href="https://maps.google.com/?q=The+Ripped+Bodice+Bookstore+Brooklyn+NY" target="_blank" rel="noopener">Williamsburg, Brooklyn</a></p>
+      <p class="venue-bio">The only bookstore in New York dedicated exclusively to romance novels — from classic love stories to queer romance, historical fiction, and fantasy. Woman- and queer-owned, the Park Slope store features a diverse selection of romance fiction and hosts author talks, book clubs, and events. A joyful, unapologetic celebration of a genre that outsells literary fiction every year — and a genuinely beloved neighborhood institution.</p>
+      <p class="notable">Romance-Only · Woman & Queer Owned · Author Events</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-book">Bookstore</span>
+      <h3>WORD</h3>
+      <p class="venue-address"><a href="https://maps.google.com/?q=WORD+Bookstore+126+Franklin+St+Brooklyn" target="_blank" rel="noopener">126 Franklin St, Brooklyn, NY 11222</a></p>
+      <p class="venue-bio">An independent community bookstore since 2007, with locations in Greenpoint, Brooklyn and Jersey City. Small but mighty — specializing in literary fiction, nonfiction, and children's books, with a basement event space that has hosted Murakami midnight parties, Bananagrams tournaments, and readings by Jonathan Lethem and Alice Munro. A true neighborhood anchor in Greenpoint's creative community.</p>
+      <p class="notable">Est. 2007 · Literary Fiction · Greenpoint Institution</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-bar">Bar</span>
+      <h3>The Turkey's Nest</h3>
+      <p class="venue-address"><a href="https://maps.google.com/?q=Turkey%27s+Nest+Tavern+94+Bedford+Ave+Brooklyn" target="_blank" rel="noopener">94 Bedford Ave, Brooklyn, NY 11211</a></p>
+      <p class="venue-bio">More dive bar than library, but a storied Williamsburg haunt for writers who prefer grit over glamour. In the era before the neighborhood was discovered, this was where the creative class drank cheaply and argued loudly. It has appeared in novels and essays as a symbol of the neighborhood's pre-gentrification soul — a reminder of the Brooklyn that made the writers who later made Brooklyn famous.</p>
+      <p class="notable">Pre-Gentrification Williamsburg · Writers' Dive · Bedford Ave</p>
     </div>
   </div>
 </section>
@@ -702,6 +914,20 @@
       <a class="map-link" href="https://www.google.com/maps/dir/The+Drama+Book+Shop,+266+W+39th+St,+New+York/Algonquin+Hotel,+59+W+44th+St,+New+York/Oscar+Wilde+Bar,+45+W+27th+St,+New+York/The+Strand+Bookstore,+828+Broadway,+New+York/Pete%27s+Tavern,+129+E+18th+St,+New+York/White+Horse+Tavern,+567+Hudson+St,+New+York" target="_blank">Open in Google Maps →</a>
     </div>
 
+    <div class="route-card">
+      <div class="route-number">04</div>
+      <h3>The Brooklyn Crawl</h3>
+      <p class="route-meta">Boerum Hill → Park Slope → Crown Heights · Full afternoon</p>
+      <ul class="route-stops">
+        <li><span class="stop-num">1.</span> The Center for Fiction <span class="stop-note">start with a book</span></li>
+        <li><span class="stop-num">2.</span> Union Hall <span class="stop-note">read by the fireplace</span></li>
+        <li><span class="stop-num">3.</span> Greenlight Bookstore <span class="stop-note">Fort Greene</span></li>
+        <li><span class="stop-num">4.</span> Franklin Park <span class="stop-note">check reading schedule</span></li>
+        <li><span class="stop-num">5.</span> Sunny's Bar <span class="stop-note">Red Hook nightcap</span></li>
+      </ul>
+      <a class="map-link" href="https://www.google.com/maps/dir/Center+for+Fiction,+15+Lafayette+Ave,+Brooklyn/Union+Hall,+702+Union+St,+Brooklyn/Greenlight+Bookstore,+686+Fulton+St,+Brooklyn/Franklin+Park,+618+St+Johns+Pl,+Brooklyn/Sunny%27s+Bar,+253+Conover+St,+Brooklyn" target="_blank">Open in Google Maps →</a>
+    </div>
+
   </div>
 </section>
 
@@ -717,7 +943,7 @@
     loading="lazy"
     allowfullscreen
     referrerpolicy="no-referrer-when-downgrade"
-    src="https://www.google.com/maps/embed?pb=!1m76!1m12!1m3!1d24194.29877!2d-74.0059!3d40.7260!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m61!3e2!4m5!1s0x89c259941069bfe3%3A0x5e95e5fe0ba5d3a!2sWhite%20Horse%20Tavern%2C%20567%20Hudson%20St%2C%20New%20York%2C%20NY!3m2!1d40.7337!2d-74.0074!4m5!1s0x89c2599c0b3fb91b%3A0xa5e0bd7c67e0b3a6!2sMinetta%20Tavern%2C%20113%20MacDougal%20St%2C%20New%20York%2C%20NY!3m2!1d40.7299!2d-74.0003!4m5!1s0x89c2599f6c73edbd%3A0x1234!2sThree%20Lives%20%26%20Company%2C%20154%20W%2010th%20St%2C%20New%20York%2C%20NY!3m2!1d40.7345!2d-74.0002!4m5!1s0x89c25990c4e98e59%3A0x7ae37d40e4d58c5!2sMcSorley%27s%20Old%20Ale%20House%2C%2015%20E%207th%20St%2C%20New%20York%2C%20NY!3m2!1d40.7279!2d-73.9894!4m5!1s0x89c2598c5ee8b4af%3A0x5!2sKGB%20Bar%2C%2085%20E%204th%20St%2C%20New%20York%2C%20NY!3m2!1d40.7261!2d-73.9893!4m5!1s0x89c259938694521b%3A0x5559e77b7b3c3c1!2sPete%27s%20Tavern%2C%20129%20E%2018th%20St%2C%20New%20York%2C%20NY!3m2!1d40.7365!2d-73.9882!4m5!1s0x89c259a1b5a1de99%3A0x8bed2f1d9e2e9dc7!2sThe%20Strand%20Bookstore%2C%20828%20Broadway%2C%20New%20York%2C%20NY!3m2!1d40.7329!2d-73.9910!4m5!1s0x89c2588640b10001%3A0xd16cd5fcb8fe9284!2sAlgonquin%20Hotel%2C%2059%20W%2044th%20St%2C%20New%20York%2C%20NY!3m2!1d40.7554!2d-73.9815!4m5!1s0x89c25900543f73a9%3A0xa!2sOscar%20Wilde%20Bar%2C%2045%20W%2027th%20St%2C%20New%20York%2C%20NY!3m2!1d40.7451!2d-73.9891!4m5!1s0x89c2599e2c3b3c5d%3A0xb!2sOld%20Town%20Bar%2C%2045%20E%2018th%20St%2C%20New%20York%2C%20NY!3m2!1d40.7376!2d-73.9894!5e0!3m2!1sen!2sus!4v1680000000000">
+    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d24194!2d-73.9857!3d40.7282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1680000000000">
   </iframe>
   <p class="map-caption">✦ All bookstores and literary bars featured in this guide · bookstorebarcrawl.com</p>
 </section>
@@ -737,11 +963,11 @@
 <footer>
   <p class="footer-quote">"In wine there is wisdom, in beer there is freedom, in water there is bacteria." — Benjamin Franklin</p>
   <hr />
-  <p><a href="mailto:nicholasbeck+books@gmail.com">Contact</a> &nbsp;·&nbsp; <a href="mailto:nicholasbeck+books@gmail.com">nicholasbeck+books@gmail.com</a></p>
+  <p><a href="/cdn-cgi/l/email-protection#640a0d070c0b0805170601070f4f060b0b0f17240309050d084a070b09">Contact</a> &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection#8ee0e7ede6e1e2effdecebede5a5ece1e1e5fdcee9e3efe7e2a0ede1e3"><span class="__cf_email__" data-cfemail="7f11161c1710131e0c1d1a1c14541d1010140c3f18121e1613511c1012">[email&#160;protected]</span></a></p>
   <p style="margin-top:0.75rem;opacity:0.4;">© 2024 Bookstore Bar Crawl NYC &nbsp;·&nbsp; bookstorebarcrawl.com</p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   function handleSignup() {
     const email = document.getElementById('email-input').value;
     if (!email || !email.includes('@')) return;
@@ -758,13 +984,4 @@
     });
   }, { threshold: 0.07 });
 
-  document.querySelectorAll('.neighborhood-section, .routes-section, .map-section, .origin-block').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(26px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-  });
-</script>
-
-</body>
-</html>
+  d
