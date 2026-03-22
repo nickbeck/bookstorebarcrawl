@@ -19,11 +19,8 @@
       --faded: #8c7a60;
       --rule: #c8b090;
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
     body {
       background-color: var(--cream);
       color: var(--ink);
@@ -32,8 +29,6 @@
       line-height: 1.7;
       overflow-x: hidden;
     }
-
-    /* ---- GRAIN OVERLAY ---- */
     body::before {
       content: '';
       position: fixed;
@@ -44,7 +39,7 @@
       opacity: 0.4;
     }
 
-    /* ---- MASTHEAD ---- */
+    /* HEADER */
     header {
       position: relative;
       background-color: var(--ink);
@@ -54,7 +49,6 @@
       border-bottom: 4px double var(--whiskey);
       overflow: hidden;
     }
-
     header::before {
       content: '';
       position: absolute;
@@ -62,12 +56,7 @@
       background: radial-gradient(ellipse at center, #2e1e0a 0%, var(--ink) 70%);
       z-index: 0;
     }
-
-    .header-inner {
-      position: relative;
-      z-index: 1;
-    }
-
+    .header-inner { position: relative; z-index: 1; }
     .masthead-rule {
       display: flex;
       align-items: center;
@@ -80,24 +69,16 @@
       letter-spacing: 0.25em;
       text-transform: uppercase;
     }
-
     .masthead-rule span { flex: 1; height: 1px; background: var(--whiskey); opacity: 0.5; }
-
     h1 {
       font-family: 'Playfair Display', Georgia, serif;
       font-size: clamp(2.8rem, 7vw, 5.5rem);
       font-weight: 900;
       line-height: 1;
-      letter-spacing: -0.01em;
       color: var(--aged);
       margin-bottom: 0.4rem;
     }
-
-    h1 em {
-      font-style: italic;
-      color: var(--whiskey);
-    }
-
+    h1 em { font-style: italic; color: var(--whiskey); }
     .subtitle {
       font-family: 'IM Fell English', serif;
       font-style: italic;
@@ -106,7 +87,6 @@
       opacity: 0.75;
       margin-bottom: 1.5rem;
     }
-
     .header-byline {
       font-family: 'Courier Prime', monospace;
       font-size: 0.72rem;
@@ -115,7 +95,7 @@
       text-transform: uppercase;
     }
 
-    /* ---- NAV ---- */
+    /* NAV */
     nav {
       background-color: var(--parchment);
       border-bottom: 2px solid var(--rule);
@@ -123,51 +103,31 @@
       top: 0;
       z-index: 100;
     }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0;
-    }
-
+    nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; }
     nav ul li a {
       display: block;
-      padding: 0.8rem 1.4rem;
+      padding: 0.8rem 1.05rem;
       font-family: 'Courier Prime', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
+      font-size: 0.67rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--ink);
       text-decoration: none;
       border-right: 1px solid var(--rule);
       transition: background 0.2s, color 0.2s;
     }
-
     nav ul li:first-child a { border-left: 1px solid var(--rule); }
+    nav ul li a:hover { background-color: var(--ink); color: var(--aged); }
 
-    nav ul li a:hover {
-      background-color: var(--ink);
-      color: var(--aged);
-    }
-
-    /* ---- INTRO LEDE ---- */
+    /* LEDE */
     .lede {
       max-width: 720px;
       margin: 3.5rem auto;
       padding: 0 2rem;
       text-align: center;
     }
-
-    .lede p {
-      font-size: 1.18rem;
-      line-height: 1.85;
-      color: var(--ink);
-    }
-
+    .lede p { font-size: 1.18rem; line-height: 1.85; }
     .lede p + p { margin-top: 1rem; }
-
     .drop-cap::first-letter {
       font-family: 'Playfair Display', serif;
       font-size: 4.5rem;
@@ -178,13 +138,12 @@
       color: var(--whiskey);
     }
 
-    /* ---- SECTION HEADERS ---- */
+    /* SECTIONS */
     .neighborhood-section {
       max-width: 1100px;
       margin: 0 auto 4rem;
       padding: 0 2rem;
     }
-
     .section-header {
       display: flex;
       align-items: center;
@@ -193,52 +152,38 @@
       padding-top: 2rem;
       border-top: 3px solid var(--ink);
     }
-
     .section-header h2 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-size: clamp(1.4rem, 3vw, 2.1rem);
       font-weight: 900;
       white-space: nowrap;
-      color: var(--ink);
     }
-
-    .section-header .rule-line {
-      flex: 1;
-      height: 1px;
-      background: var(--rule);
-    }
-
+    .section-header .rule-line { flex: 1; height: 1px; background: var(--rule); }
     .section-header .neighborhood-tag {
       font-family: 'Courier Prime', monospace;
-      font-size: 0.68rem;
+      font-size: 0.67rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--faded);
       white-space: nowrap;
     }
 
-    /* ---- VENUE GRID ---- */
+    /* VENUE GRID */
     .venue-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
       gap: 2px;
       border: 2px solid var(--ink);
     }
 
-    /* ---- VENUE CARD ---- */
+    /* VENUE CARD */
     .venue-card {
       background: var(--cream);
       padding: 1.8rem 1.6rem;
       border: 1px solid var(--rule);
-      position: relative;
       transition: background 0.25s;
-      cursor: default;
     }
-
-    .venue-card:hover {
-      background: var(--aged);
-    }
-
+    .venue-card:hover { background: var(--aged); }
     .venue-type-badge {
       font-family: 'Courier Prime', monospace;
       font-size: 0.62rem;
@@ -249,93 +194,180 @@
       display: inline-block;
       margin-bottom: 0.75rem;
     }
-
     .badge-bar { color: var(--deep-red); }
     .badge-book { color: var(--moss); }
-
     .venue-card h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
+      font-size: 1.22rem;
       font-weight: 700;
       line-height: 1.2;
       margin-bottom: 0.35rem;
-      color: var(--ink);
     }
-
     .venue-address {
       font-family: 'Courier Prime', monospace;
       font-size: 0.72rem;
       color: var(--faded);
       margin-bottom: 0.9rem;
-      letter-spacing: 0.05em;
     }
-
-    .venue-bio {
-      font-size: 0.92rem;
-      line-height: 1.65;
-      color: #3a2e1e;
-    }
-
-    .venue-card .notable {
+    .venue-bio { font-size: 0.92rem; line-height: 1.65; color: #3a2e1e; }
+    .notable {
       margin-top: 1rem;
       padding-top: 0.75rem;
       border-top: 1px dashed var(--rule);
       font-family: 'Courier Prime', monospace;
       font-size: 0.72rem;
       color: var(--whiskey);
-      letter-spacing: 0.05em;
     }
+    .notable::before { content: '✦ Notable: '; font-weight: 700; }
 
-    .venue-card .notable::before {
-      content: '✦ Notable: ';
-      font-weight: 700;
-    }
-
-    /* ---- MAP CTA ---- */
-    .map-cta {
-      background-color: var(--ink);
-      color: var(--aged);
-      padding: 4rem 2rem;
+    /* ORNAMENT */
+    .ornament {
       text-align: center;
-      margin: 4rem 0 0;
-      border-top: 4px double var(--whiskey);
+      color: var(--whiskey);
+      font-size: 1.2rem;
+      letter-spacing: 0.5em;
+      margin: 2rem 0;
+      opacity: 0.6;
     }
 
-    .map-cta h2 {
+    /* ORIGIN / SHAKESPEARE BLOCK */
+    .origin-wrap { padding: 0 2rem; }
+    .origin-block {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2.5rem 3rem;
+      background: var(--ink);
+      color: var(--aged);
+      border-left: 5px solid var(--whiskey);
+      position: relative;
+    }
+    .origin-block::before {
+      content: '\201C';
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      font-weight: 900;
-      font-style: italic;
-      margin-bottom: 1rem;
-      color: var(--aged);
+      font-size: 8rem;
+      color: var(--whiskey);
+      opacity: 0.12;
+      position: absolute;
+      top: -1rem;
+      left: 1rem;
+      line-height: 1;
+      pointer-events: none;
     }
-
-    .map-cta p {
-      max-width: 520px;
-      margin: 0 auto 2rem;
-      opacity: 0.75;
-      font-style: italic;
-    }
-
-    .btn {
-      display: inline-block;
+    .origin-label {
       font-family: 'Courier Prime', monospace;
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      padding: 0.85rem 2rem;
-      border: 2px solid var(--whiskey);
-      color: var(--aged);
+      color: var(--whiskey);
+      margin-bottom: 1rem;
+    }
+    .origin-block p {
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-bottom: 0.85rem;
+      position: relative;
+      z-index: 1;
+    }
+    .origin-block p:last-child { margin-bottom: 0; }
+    .strike { text-decoration: line-through; opacity: 0.4; }
+    .origin-block em { color: var(--whiskey); font-style: italic; }
+
+    /* ROUTES */
+    .routes-section {
+      max-width: 1100px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+    .routes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .route-card {
+      border: 2px solid var(--ink);
+      padding: 1.75rem;
+      background: var(--cream);
+      transition: background 0.2s;
+    }
+    .route-card:hover { background: var(--aged); }
+    .route-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--whiskey);
+      opacity: 0.2;
+      line-height: 1;
+      margin-bottom: -0.4rem;
+    }
+    .route-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .route-meta {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.67rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--faded);
+      margin-bottom: 1rem;
+    }
+    .route-stops { list-style: none; }
+    .route-stops li {
+      font-size: 0.88rem;
+      padding: 0.38rem 0;
+      border-bottom: 1px dashed var(--rule);
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+    .route-stops li:last-child { border-bottom: none; }
+    .stop-num {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.65rem;
+      color: var(--whiskey);
+      font-weight: 700;
+      min-width: 1.2rem;
+    }
+    .stop-note { font-size: 0.78rem; color: var(--faded); font-style: italic; margin-left: auto; }
+    .map-link {
+      display: inline-block;
+      margin-top: 1.25rem;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.67rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--deep-red);
       text-decoration: none;
-      transition: background 0.2s, color 0.2s;
+      border-bottom: 1px solid currentColor;
+      transition: color 0.2s;
+    }
+    .map-link:hover { color: var(--ink); }
+
+    /* MAP */
+    .map-section {
+      max-width: 1100px;
+      margin: 0 auto 4rem;
+      padding: 0 2rem;
+    }
+    .map-embed {
+      width: 100%;
+      height: 500px;
+      border: 3px solid var(--ink);
+      display: block;
+    }
+    .map-caption {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--faded);
+      margin-top: 0.6rem;
+      text-align: center;
     }
 
-    .btn:hover {
-      background: var(--whiskey);
-      color: var(--ink);
-    }
-
-    /* ---- EMAIL SIGNUP ---- */
+    /* SIGNUP */
     .signup {
       background: var(--parchment);
       border-top: 2px solid var(--rule);
@@ -343,30 +375,25 @@
       padding: 3.5rem 2rem;
       text-align: center;
     }
-
     .signup h2 {
       font-family: 'Playfair Display', serif;
       font-size: 1.8rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
     }
-
     .signup p {
       font-style: italic;
       color: var(--faded);
       margin-bottom: 1.5rem;
       font-size: 0.95rem;
     }
-
-    .signup form {
+    .signup-form {
       display: flex;
       justify-content: center;
-      gap: 0;
       max-width: 420px;
       margin: 0 auto;
     }
-
-    .signup input[type="email"] {
+    .signup-form input[type="email"] {
       flex: 1;
       padding: 0.75rem 1rem;
       border: 2px solid var(--ink);
@@ -377,8 +404,7 @@
       color: var(--ink);
       outline: none;
     }
-
-    .signup button {
+    .signup-form button {
       padding: 0.75rem 1.25rem;
       background: var(--ink);
       color: var(--aged);
@@ -390,10 +416,9 @@
       cursor: pointer;
       transition: background 0.2s;
     }
+    .signup-form button:hover { background: var(--deep-red); border-color: var(--deep-red); }
 
-    .signup button:hover { background: var(--deep-red); border-color: var(--deep-red); }
-
-    /* ---- FOOTER ---- */
+    /* FOOTER */
     footer {
       background-color: var(--ink);
       color: var(--faded);
@@ -403,10 +428,9 @@
       font-size: 0.72rem;
       letter-spacing: 0.1em;
     }
-
     footer a { color: var(--whiskey); text-decoration: none; }
-    footer .footer-rule { margin: 0.75rem 0; border-color: #3a2e1e; }
-    footer .quote {
+    footer hr { margin: 0.75rem 0; border-color: #3a2e1e; }
+    .footer-quote {
       font-family: 'IM Fell English', serif;
       font-style: italic;
       font-size: 0.88rem;
@@ -415,267 +439,332 @@
       margin-bottom: 1rem;
     }
 
-    /* ---- DIVIDER ORNAMENT ---- */
-    .ornament {
-      text-align: center;
-      color: var(--whiskey);
-      font-size: 1.2rem;
-      letter-spacing: 0.5em;
-      margin: 2rem 0;
-      opacity: 0.6;
-    }
-
-    /* ---- ANIMATIONS ---- */
+    /* ANIMATIONS */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(18px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    .venue-card { animation: fadeUp 0.45s ease both; }
+    .venue-card:nth-child(1) { animation-delay: 0.04s; }
+    .venue-card:nth-child(2) { animation-delay: 0.09s; }
+    .venue-card:nth-child(3) { animation-delay: 0.14s; }
+    .venue-card:nth-child(4) { animation-delay: 0.19s; }
+    .venue-card:nth-child(5) { animation-delay: 0.24s; }
 
-    .venue-card {
-      animation: fadeUp 0.5s ease both;
-    }
-
-    .venue-card:nth-child(1) { animation-delay: 0.05s; }
-    .venue-card:nth-child(2) { animation-delay: 0.1s; }
-    .venue-card:nth-child(3) { animation-delay: 0.15s; }
-    .venue-card:nth-child(4) { animation-delay: 0.2s; }
-    .venue-card:nth-child(5) { animation-delay: 0.25s; }
-    .venue-card:nth-child(6) { animation-delay: 0.3s; }
-
-    /* ---- RESPONSIVE ---- */
-    @media (max-width: 600px) {
-      .venue-grid { grid-template-columns: 1fr; }
-      nav ul li a { padding: 0.7rem 0.9rem; font-size: 0.65rem; }
-      .signup form { flex-direction: column; }
-      .signup input[type="email"] { border-right: 2px solid var(--ink); border-bottom: none; }
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .venue-grid, .routes-grid { grid-template-columns: 1fr; }
+      nav ul li a { padding: 0.65rem 0.7rem; font-size: 0.61rem; }
+      .origin-block { padding: 2rem 1.5rem; }
+      .signup-form { flex-direction: column; }
+      .signup-form input[type="email"] { border-right: 2px solid var(--ink); border-bottom: none; }
+      .map-embed { height: 340px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="header-inner">
-      <div class="masthead-rule">
-        <span></span>
-        Est. New York City
-        <span></span>
-      </div>
-      <h1>Bookstore <em>&amp;</em> Bar Crawl</h1>
-      <p class="subtitle">A Literary Drinker's Guide to New York City</p>
-      <div class="masthead-rule" style="margin-top:1rem; margin-bottom:0.5rem;">
-        <span></span>
-        ✦ ✦ ✦
-        <span></span>
-      </div>
-      <p class="header-byline">Books · Bars · Boroughs</p>
-    </div>
-  </header>
-
-  <!-- NAV -->
-  <nav>
-    <ul>
-      <li><a href="#greenwich">Greenwich Village</a></li>
-      <li><a href="#eastvillage">East Village</a></li>
-      <li><a href="#midtown">Midtown</a></li>
-      <li><a href="#plan">Plan Your Crawl</a></li>
-    </ul>
-  </nav>
-
-  <!-- LEDE -->
-  <div class="lede">
-    <p class="drop-cap">New York City has always been a place where writers drink and drinkers write. From the whiskey-soaked booths where O. Henry penned his masterpieces, to the dim back rooms where Kerouac and Ginsberg argued about God and jazz — the city's literary history is inseparable from its bars. And its bookstores are cathedrals.</p>
-    <p>This is your guide to both. A crawl through the neighborhoods, the shelves, and the stools where New York's greatest stories were told — or, at least, started.</p>
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="masthead-rule"><span></span>Est. New York City<span></span></div>
+    <h1>Bookstore <em>&amp;</em> Bar Crawl</h1>
+    <p class="subtitle">A Literary Drinker's Guide to New York City</p>
+    <div class="masthead-rule" style="margin-top:1rem;margin-bottom:0.5rem;"><span></span>✦ ✦ ✦<span></span></div>
+    <p class="header-byline">Books · Bars · Boroughs</p>
   </div>
+</header>
 
-  <div class="ornament">— ✦ —</div>
+<!-- NAV -->
+<nav>
+  <ul>
+    <li><a href="#greenwich">Greenwich Village</a></li>
+    <li><a href="#eastvillage">East Village</a></li>
+    <li><a href="#midtown">Midtown</a></li>
+    <li><a href="#flatiron">Flatiron</a></li>
+    <li><a href="#routes">Crawl Routes</a></li>
+    <li><a href="#map">Map</a></li>
+  </ul>
+</nav>
 
-  <!-- GREENWICH VILLAGE -->
-  <section class="neighborhood-section" id="greenwich">
-    <div class="section-header">
-      <h2>Greenwich & West Village</h2>
-      <div class="rule-line"></div>
-      <span class="neighborhood-tag">The Bohemian Quarter</span>
-    </div>
-    <div class="venue-grid">
+<!-- LEDE -->
+<div class="lede">
+  <p class="drop-cap">New York City has always been a place where writers drink and drinkers write. From the whiskey-soaked booths where O. Henry penned his masterpieces, to the dim back rooms where Kerouac and Ginsberg argued about God and jazz — the city's literary history is inseparable from its bars. And its bookstores are cathedrals.</p>
+  <p>This is your guide to both. A crawl through the neighborhoods, the shelves, and the stools where New York's greatest stories were told — or, at least, started.</p>
+</div>
 
-      <div class="venue-card">
-        <span class="venue-type-badge badge-bar">Bar</span>
-        <h3>White Horse Tavern</h3>
-        <p class="venue-address">567 Hudson St, New York, NY 10014</p>
-        <p class="venue-bio">Established in 1880, it became a 1950s bohemian hub — most famous as the place where Welsh poet Dylan Thomas reportedly drank his final shots of whiskey before his death in 1953. James Baldwin, Jack Kerouac, and Norman Mailer were regulars.</p>
-        <p class="notable">Dylan Thomas · Jack Kerouac · Norman Mailer</p>
-      </div>
+<div class="ornament">— ✦ —</div>
 
-      <div class="venue-card">
-        <span class="venue-type-badge badge-bar">Bar</span>
-        <h3>Minetta Tavern</h3>
-        <p class="venue-address">113 MacDougal St, New York, NY 10012</p>
-        <p class="venue-bio">A favorite of the Lost Generation and the Beats. Hemingway, Ezra Pound, and E.E. Cummings were regulars here. Legend says writer Joe Gould — subject of Joseph Mitchell's <em>Joe Gould's Secret</em> — lived out of the booths and received his mail here.</p>
-        <p class="notable">Hemingway · Ezra Pound · E.E. Cummings</p>
-      </div>
-
-      <div class="venue-card">
-        <span class="venue-type-badge badge-bar">Bar</span>
-        <h3>Kettle of Fish</h3>
-        <p class="venue-address">59 Christopher St, New York, NY 10014</p>
-        <p class="venue-bio">The epicenter of the Beat Generation. Jack Kerouac was famously photographed here, and it served as a meeting ground for Allen Ginsberg and a young Bob Dylan, who found his voice in these smoky rooms.</p>
-        <p class="notable">Jack Kerouac · Allen Ginsberg · Bob Dylan</p>
-      </div>
-
-      <div class="venue-card">
-        <span class="venue-type-badge badge-book">Bookstore</span>
-        <h3>Three Lives & Company</h3>
-        <p class="venue-address">154 W 10th St, New York, NY 10014</p>
-        <p class="venue-bio">Named after the Gertrude Stein novel, this beloved corner bookstore is a sanctuary for writers and publishing professionals. Known for its curated selection and irreplaceable old New York literary atmosphere. One of the city's great institutions.</p>
-        <p class="notable">Named after Gertrude Stein · Est. 1968</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- EAST VILLAGE -->
-  <section class="neighborhood-section" id="eastvillage">
-    <div class="section-header">
-      <h2>East Village & Gramercy</h2>
-      <div class="rule-line"></div>
-      <span class="neighborhood-tag">Old New York</span>
-    </div>
-    <div class="venue-grid">
-
-      <div class="venue-card">
-        <span class="venue-type-badge badge-bar">Bar</span>
-        <h3>McSorley's Old Ale House</h3>
-        <p class="venue-address">15 E 7th St, New York, NY 10003</p>
-        <p class="venue-bio">Opened in 1854, one of the city's oldest bars. Immortalized by Joseph Mitchell in his legendary New Yorker profiles. E.E. Cummings was a frequent patron; the bar famously didn't allow women until 1970 — a history documented in countless essays and lawsuits.</p>
-        <p class="notable">E.E. Cummings · Joseph Mitchell · Est. 1854</p>
-      </div>
-
-      <div class="venue-card">
-        <span class="venue-type-badge badge-bar">Bar</span>
-        <h3>KGB Bar</h3>
-        <p class="venue-address">85 E 4th St, New York, NY 10003</p>
-        <p class="venue-bio">Located in a former Ukrainian social club, this dim Soviet-themed bar is the modern heartbeat of the NYC literary scene. Its legendary KGB Reading Series has featured Pulitzer winners and debut novelists alike — the city's best place to hear a story told aloud.</p>
-        <p class="notable">KGB Reading Series · Still active today</p>
-      </div>
-
-      <div class="venue-card">
-        <span class="venue-type-badge badge-bar">Bar</span>
-        <h3>Pete's Tavern</h3>
-        <p class="venue-address">129 E 18th St, New York, NY 10003</p>
-        <p class="venue-bio">A Gramercy landmark since 1864. Author O. Henry was a regular and famously wrote his masterpiece <em>"The Gift of the Magi"</em> in the front booth — the bar appears in his stories under the pseudonym "Healy's." The booth is still there.</p>
-        <p class="notable">O. Henry · "The Gift of the Magi" · Est. 1864</p>
-      </div>
-
-      <div class="venue-card">
-        <span class="venue-type-badge badge-book">Bookstore</span>
-        <h3>The Strand</h3>
-        <p class="venue-address">828 Broadway, New York, NY 10003</p>
-        <p class="venue-bio">Famed for its "18 miles of books," this is the undisputed king of NYC bookstores. Since 1927 it has been the primary source for used, rare, and new titles for the city's intellectual elite. To visit New York without visiting the Strand is to have missed the point.</p>
-        <p class="notable">18 Miles of Books · Est. 1927</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- MIDTOWN -->
-  <section class="neighborhood-section" id="midtown">
-    <div class="section-header">
-      <h2>Midtown & Upper East Side</h2>
-      <div class="rule-line"></div>
-      <span class="neighborhood-tag">The Literary Establishment</span>
-    </div>
-    <div class="venue-grid">
-
-      <div class="venue-card">
-        <span class="venue-type-badge badge-bar">Bar</span>
-        <h3>Blue Bar at The Algonquin</h3>
-        <p class="venue-address">59 W 44th St, New York, NY 10036</p>
-        <p class="venue-bio">Home to the Algonquin Round Table of the 1920s — Dorothy Parker, Robert Benchley, and George S. Kaufman met here daily for lunch and devastating wit, eventually founding <em>The New Yorker</em> magazine. The hotel cat's lineage continues to this day.</p>
-        <p class="notable">Dorothy Parker · The New Yorker · Round Table</p>
-      </div>
-
-      <div class="venue-card">
-        <span class="venue-type-badge badge-bar">Bar</span>
-        <h3>Bemelmans Bar at The Carlyle</h3>
-        <p class="venue-address">35 E 76th St, New York, NY 10021</p>
-        <p class="venue-bio">Named after Ludwig Bemelmans, author and illustrator of the <em>Madeline</em> children's books. He painted the whimsical Central Park murals covering the walls — in exchange for room and board at the hotel. The murals remain one of New York's great secrets.</p>
-        <p class="notable">Ludwig Bemelmans · Madeline · Original murals</p>
-      </div>
-
-      <div class="venue-card">
-        <span class="venue-type-badge badge-book">Bookstore</span>
-        <h3>Argosy Book Store</h3>
-        <p class="venue-address">116 E 59th St, New York, NY 10022</p>
-        <p class="venue-bio">Established in 1925 and still family-owned, this six-story townhouse specializes in antiquarian books, rare maps, and autographs. A genuine time capsule of the city's scholarly history, hiding in plain sight on the Upper East Side.</p>
-        <p class="notable">Antiquarian · Rare Maps · Est. 1925</p>
-      </div>
-
-      <div class="venue-card">
-        <span class="venue-type-badge badge-book">Bookstore</span>
-        <h3>The Drama Book Shop</h3>
-        <p class="venue-address">266 W 39th St, New York, NY 10018</p>
-        <p class="venue-bio">A hundred-year-old institution for playwrights and theater lovers. Famously saved from closing by Lin-Manuel Miranda, it remains the primary resource for scripts and theatrical literature in the city — and one of Broadway's most beloved gathering places.</p>
-        <p class="notable">Saved by Lin-Manuel Miranda · Scripts & Theater</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- PLAN YOUR CRAWL CTA -->
-  <div class="map-cta" id="plan">
-    <h2>Plan Your Crawl</h2>
-    <p>Use Google Maps to chart your route between venues. We recommend starting with a drink, ending with a book, and leaving time for both.</p>
-    <a href="https://maps.google.com/?q=White+Horse+Tavern+NYC" target="_blank" class="btn">Open in Google Maps</a>
+<!-- GREENWICH VILLAGE -->
+<section class="neighborhood-section" id="greenwich">
+  <div class="section-header">
+    <h2>Greenwich & West Village</h2>
+    <div class="rule-line"></div>
+    <span class="neighborhood-tag">The Bohemian Quarter</span>
   </div>
-
-  <!-- EMAIL SIGNUP -->
-  <div class="signup">
-    <h2>Future Crawls & Updates</h2>
-    <p>Get notified when we organize the next group crawl through the stacks and stools of New York.</p>
-    <form onsubmit="handleSignup(event)">
-      <input type="email" placeholder="your@email.com" required />
-      <button type="submit">Sign Up</button>
-    </form>
-    <p id="signup-confirm" style="display:none; margin-top:1rem; color:var(--moss);">✓ You're on the list.</p>
+  <div class="venue-grid">
+    <div class="venue-card">
+      <span class="venue-type-badge badge-bar">Bar</span>
+      <h3>White Horse Tavern</h3>
+      <p class="venue-address">567 Hudson St, New York, NY 10014</p>
+      <p class="venue-bio">Established in 1880, it became a 1950s bohemian hub — most famous as the place where Welsh poet Dylan Thomas reportedly drank his final shots of whiskey before his death in 1953. James Baldwin, Jack Kerouac, and Norman Mailer were regulars. Kerouac was famously thrown out on several occasions, and reportedly found the words "Go home Jack" written in the men's room.</p>
+      <p class="notable">Dylan Thomas · Kerouac · Norman Mailer · James Baldwin</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-bar">Bar</span>
+      <h3>Minetta Tavern</h3>
+      <p class="venue-address">113 MacDougal St, New York, NY 10012</p>
+      <p class="venue-bio">A favorite of the Lost Generation and the Beats. Hemingway, Ezra Pound, and E.E. Cummings were regulars. Legend says writer Joe Gould — subject of Joseph Mitchell's <em>Joe Gould's Secret</em> — lived out of the booths and received his mail here.</p>
+      <p class="notable">Hemingway · Ezra Pound · E.E. Cummings</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-bar">Bar</span>
+      <h3>Kettle of Fish</h3>
+      <p class="venue-address">59 Christopher St, New York, NY 10014</p>
+      <p class="venue-bio">The epicenter of the Beat Generation. Jack Kerouac was famously photographed here, and it served as a meeting ground for Allen Ginsberg and a young Bob Dylan, who found his voice in these smoky rooms before becoming a legend.</p>
+      <p class="notable">Jack Kerouac · Allen Ginsberg · Bob Dylan</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-book">Bookstore</span>
+      <h3>Three Lives & Company</h3>
+      <p class="venue-address">154 W 10th St, New York, NY 10014</p>
+      <p class="venue-bio">Named after the Gertrude Stein novel, this beloved corner bookstore is a sanctuary for local writers and publishing professionals. Known for its curated selection and irreplaceable old New York literary atmosphere — a place where books are still chosen with genuine care.</p>
+      <p class="notable">Named after Gertrude Stein · Est. 1968</p>
+    </div>
   </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p class="quote">"In wine there is wisdom, in beer there is freedom, in water there is bacteria." — Benjamin Franklin</p>
-    <hr class="footer-rule" />
-    <p>
-      <a href="mailto:nicholasbeck+books@gmail.com">Contact</a>
-      &nbsp;·&nbsp;
-      <a href="#">nicholasbeck+books@gmail.com</a>
-    </p>
-    <p style="margin-top:0.75rem; opacity:0.4;">© 2024 Bookstore Bar Crawl NYC &nbsp;·&nbsp; bookstorebarcrawl.com</p>
-  </footer>
+<!-- EAST VILLAGE -->
+<section class="neighborhood-section" id="eastvillage">
+  <div class="section-header">
+    <h2>East Village & Gramercy</h2>
+    <div class="rule-line"></div>
+    <span class="neighborhood-tag">Old New York</span>
+  </div>
+  <div class="venue-grid">
+    <div class="venue-card">
+      <span class="venue-type-badge badge-bar">Bar</span>
+      <h3>McSorley's Old Ale House</h3>
+      <p class="venue-address">15 E 7th St, New York, NY 10003</p>
+      <p class="venue-bio">Opened in 1854, one of the city's oldest bars. Immortalized by Joseph Mitchell in his legendary New Yorker profiles. E.E. Cummings was a frequent patron — he wrote <em>"i was sitting in mcsorley's"</em> in 1923. The bar famously didn't admit women until 1970.</p>
+      <p class="notable">E.E. Cummings · Joseph Mitchell · Est. 1854</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-bar">Bar</span>
+      <h3>KGB Bar</h3>
+      <p class="venue-address">85 E 4th St, New York, NY 10003</p>
+      <p class="venue-bio">Located in a former Ukrainian social club, this dim Soviet-themed bar is the modern heartbeat of the NYC literary scene. Its KGB Reading Series has hosted Pulitzer winners and debut novelists alike — the city's finest place to hear fiction read aloud.</p>
+      <p class="notable">KGB Reading Series · Still active today</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-bar">Bar</span>
+      <h3>Pete's Tavern</h3>
+      <p class="venue-address">129 E 18th St, New York, NY 10003</p>
+      <p class="venue-bio">A Gramercy landmark since 1864. O. Henry famously wrote <em>"The Gift of the Magi"</em> in the front booth — the bar appears in his stories under the name "Healy's." Ludwig Bemelmans also wrote the first <em>Madeline</em> book here, reportedly on the back of a menu.</p>
+      <p class="notable">O. Henry · Ludwig Bemelmans · Est. 1864</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-book">Bookstore</span>
+      <h3>The Strand</h3>
+      <p class="venue-address">828 Broadway, New York, NY 10003</p>
+      <p class="venue-bio">Famed for its "18 miles of books," this is the undisputed king of NYC bookstores. Since 1927 it has been the primary source for used, rare, and new titles for the city's intellectual elite. To visit New York without visiting the Strand is to have missed the point.</p>
+      <p class="notable">18 Miles of Books · Est. 1927</p>
+    </div>
+  </div>
+</section>
 
-  <script>
-    function handleSignup(e) {
-      e.preventDefault();
-      document.getElementById('signup-confirm').style.display = 'block';
-      e.target.style.display = 'none';
-    }
+<!-- MIDTOWN -->
+<section class="neighborhood-section" id="midtown">
+  <div class="section-header">
+    <h2>Midtown & Upper East Side</h2>
+    <div class="rule-line"></div>
+    <span class="neighborhood-tag">The Literary Establishment</span>
+  </div>
+  <div class="venue-grid">
+    <div class="venue-card">
+      <span class="venue-type-badge badge-bar">Bar</span>
+      <h3>Blue Bar at The Algonquin</h3>
+      <p class="venue-address">59 W 44th St, New York, NY 10036</p>
+      <p class="venue-bio">Home to the Algonquin Round Table of the 1920s — Dorothy Parker, Robert Benchley, and George S. Kaufman met here daily. Harold Ross won so much money from fellow members in a poker game that he used it to found <em>The New Yorker</em> magazine.</p>
+      <p class="notable">Dorothy Parker · The New Yorker · Round Table</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-bar">Bar</span>
+      <h3>Bemelmans Bar at The Carlyle</h3>
+      <p class="venue-address">35 E 76th St, New York, NY 10021</p>
+      <p class="venue-bio">Named after Ludwig Bemelmans, author and illustrator of the <em>Madeline</em> children's books. He painted the whimsical Central Park murals that cover all four walls — in exchange for room and board at the hotel. One of New York's most cherished secrets.</p>
+      <p class="notable">Ludwig Bemelmans · Madeline · Original murals</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-book">Bookstore</span>
+      <h3>Argosy Book Store</h3>
+      <p class="venue-address">116 E 59th St, New York, NY 10022</p>
+      <p class="venue-bio">Established in 1925 and still family-owned, this six-story townhouse specializes in antiquarian books, rare maps, and autographs. A genuine time capsule of the city's scholarly history — hiding in plain sight since the Jazz Age.</p>
+      <p class="notable">Antiquarian · Rare Maps · Est. 1925</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-book">Bookstore</span>
+      <h3>The Drama Book Shop</h3>
+      <p class="venue-address">266 W 39th St, New York, NY 10018</p>
+      <p class="venue-bio">A hundred-year-old institution for playwrights and theater lovers. Famously saved from closing by Lin-Manuel Miranda, it remains the primary resource for scripts and theatrical literature in the city — and one of Broadway's most beloved gathering places.</p>
+      <p class="notable">Saved by Lin-Manuel Miranda · Scripts & Theater</p>
+    </div>
+  </div>
+</section>
 
-    // Scroll-triggered fade for venue sections
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, { threshold: 0.1 });
+<!-- FLATIRON & NOMAD -->
+<section class="neighborhood-section" id="flatiron">
+  <div class="section-header">
+    <h2>Flatiron & NoMad</h2>
+    <div class="rule-line"></div>
+    <span class="neighborhood-tag">New Additions</span>
+  </div>
+  <div class="venue-grid">
+    <div class="venue-card">
+      <span class="venue-type-badge badge-bar">Bar</span>
+      <h3>Oscar Wilde</h3>
+      <p class="venue-address">45 W 27th St, New York, NY 10001</p>
+      <p class="venue-bio">A grand homage to the Irish writer, poet, and playwright whose wit remains unmatched. Beyond paying tribute to the man who once said "I have the simplest tastes — I am always satisfied with the best," the bar claims a remarkable physical distinction: at 118.5 feet, it is home to New York City's longest bar. The Victorian opulence — gilded ceilings, velvet, and portraits of the great man himself — feels entirely appropriate.</p>
+      <p class="notable">Homage to Oscar Wilde · NYC's Longest Bar — 118.5 ft</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-bar">Bar</span>
+      <h3>Old Town Bar</h3>
+      <p class="venue-address">45 E 18th St, New York, NY 10003</p>
+      <p class="venue-bio">Dating to 1892 with its original pressed-tin ceilings, mahogany bar, and tile floors still intact, Old Town is what Pulitzer Prize-winning author Frank McCourt — of <em>Angela's Ashes</em> — called "the king of New York bars — where you can still talk." Nobel Prize-winning poet Seamus Heaney considered it his favorite bar in the city and visited whenever he was in town. Signed book jackets from McCourt, Billy Collins, Nick Hornby, and Christopher Hitchens line the walls. Andy Warhol was once a regular too.</p>
+      <p class="notable">Frank McCourt · Seamus Heaney · Billy Collins · Est. 1892</p>
+    </div>
+  </div>
+</section>
 
-    document.querySelectorAll('.neighborhood-section').forEach(section => {
-      section.style.opacity = '0';
-      section.style.transform = 'translateY(30px)';
-      section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(section);
+<div class="ornament">— ✦ —</div>
+
+<!-- SHAKESPEARE / ORIGIN BLOCK -->
+<div class="origin-wrap" id="routes">
+  <div class="origin-block">
+    <div class="origin-label">✦ The Origin of This Crawl</div>
+    <p>William Shakespeare was born in Stratford-upon-Avon, England, in April 1564. The exact date of his birth is not recorded, but it is most often celebrated around the world on April 23rd — the same day, centuries later, that New Yorkers gathered to raise a glass in his name.</p>
+    <p>On that day (or really, any day), celebrate New York City's literary and drinking traditions by supporting local bookstores, spending time in bars with a literary impact, and being with — and making — new friends.</p>
+  </div>
+</div>
+
+<div class="ornament" style="margin-top:3rem;">— ✦ —</div>
+
+<!-- SUGGESTED CRAWL ROUTES -->
+<section class="routes-section">
+  <div class="section-header">
+    <h2>Suggested Crawl Routes</h2>
+    <div class="rule-line"></div>
+    <span class="neighborhood-tag">Plan Your Day</span>
+  </div>
+  <div class="routes-grid">
+
+    <div class="route-card">
+      <div class="route-number">01</div>
+      <h3>The Beat Generation</h3>
+      <p class="route-meta">West Village → East Village · ~2 miles · Half day</p>
+      <ul class="route-stops">
+        <li><span class="stop-num">1.</span> Three Lives & Company <span class="stop-note">browse first</span></li>
+        <li><span class="stop-num">2.</span> Kettle of Fish</li>
+        <li><span class="stop-num">3.</span> White Horse Tavern</li>
+        <li><span class="stop-num">4.</span> Minetta Tavern</li>
+        <li><span class="stop-num">5.</span> KGB Bar <span class="stop-note">check reading schedule</span></li>
+      </ul>
+      <a class="map-link" href="https://www.google.com/maps/dir/Three+Lives+%26+Company,+154+W+10th+St,+New+York/Kettle+of+Fish,+59+Christopher+St,+New+York/White+Horse+Tavern,+567+Hudson+St,+New+York/Minetta+Tavern,+113+MacDougal+St,+New+York/KGB+Bar,+85+E+4th+St,+New+York" target="_blank">Open in Google Maps →</a>
+    </div>
+
+    <div class="route-card">
+      <div class="route-number">02</div>
+      <h3>The Old New York</h3>
+      <p class="route-meta">Broadway → Flatiron · ~1.5 miles · Afternoon</p>
+      <ul class="route-stops">
+        <li><span class="stop-num">1.</span> The Strand <span class="stop-note">allow an hour</span></li>
+        <li><span class="stop-num">2.</span> Pete's Tavern</li>
+        <li><span class="stop-num">3.</span> McSorley's Old Ale House</li>
+        <li><span class="stop-num">4.</span> Old Town Bar</li>
+        <li><span class="stop-num">5.</span> Oscar Wilde <span class="stop-note">nightcap</span></li>
+      </ul>
+      <a class="map-link" href="https://www.google.com/maps/dir/The+Strand+Bookstore,+828+Broadway,+New+York/Pete%27s+Tavern,+129+E+18th+St,+New+York/McSorley%27s+Old+Ale+House,+15+E+7th+St,+New+York/Old+Town+Bar,+45+E+18th+St,+New+York/Oscar+Wilde+Bar,+45+W+27th+St,+New+York" target="_blank">Open in Google Maps →</a>
+    </div>
+
+    <div class="route-card">
+      <div class="route-number">03</div>
+      <h3>The Full Shakespeare</h3>
+      <p class="route-meta">All neighborhoods · Full day · April 23rd</p>
+      <ul class="route-stops">
+        <li><span class="stop-num">1.</span> The Drama Book Shop <span class="stop-note">start in Midtown</span></li>
+        <li><span class="stop-num">2.</span> Blue Bar at The Algonquin</li>
+        <li><span class="stop-num">3.</span> Oscar Wilde</li>
+        <li><span class="stop-num">4.</span> The Strand</li>
+        <li><span class="stop-num">5.</span> Pete's Tavern</li>
+        <li><span class="stop-num">6.</span> White Horse Tavern <span class="stop-note">final round</span></li>
+      </ul>
+      <a class="map-link" href="https://www.google.com/maps/dir/The+Drama+Book+Shop,+266+W+39th+St,+New+York/Algonquin+Hotel,+59+W+44th+St,+New+York/Oscar+Wilde+Bar,+45+W+27th+St,+New+York/The+Strand+Bookstore,+828+Broadway,+New+York/Pete%27s+Tavern,+129+E+18th+St,+New+York/White+Horse+Tavern,+567+Hudson+St,+New+York" target="_blank">Open in Google Maps →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-section" id="map">
+  <div class="section-header">
+    <h2>All Venues on the Map</h2>
+    <div class="rule-line"></div>
+    <span class="neighborhood-tag">New York City</span>
+  </div>
+  <iframe
+    class="map-embed"
+    loading="lazy"
+    allowfullscreen
+    referrerpolicy="no-referrer-when-downgrade"
+    src="https://www.google.com/maps/embed?pb=!1m76!1m12!1m3!1d24194.29877!2d-74.0059!3d40.7260!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m61!3e2!4m5!1s0x89c259941069bfe3%3A0x5e95e5fe0ba5d3a!2sWhite%20Horse%20Tavern%2C%20567%20Hudson%20St%2C%20New%20York%2C%20NY!3m2!1d40.7337!2d-74.0074!4m5!1s0x89c2599c0b3fb91b%3A0xa5e0bd7c67e0b3a6!2sMinetta%20Tavern%2C%20113%20MacDougal%20St%2C%20New%20York%2C%20NY!3m2!1d40.7299!2d-74.0003!4m5!1s0x89c2599f6c73edbd%3A0x1234!2sThree%20Lives%20%26%20Company%2C%20154%20W%2010th%20St%2C%20New%20York%2C%20NY!3m2!1d40.7345!2d-74.0002!4m5!1s0x89c25990c4e98e59%3A0x7ae37d40e4d58c5!2sMcSorley%27s%20Old%20Ale%20House%2C%2015%20E%207th%20St%2C%20New%20York%2C%20NY!3m2!1d40.7279!2d-73.9894!4m5!1s0x89c2598c5ee8b4af%3A0x5!2sKGB%20Bar%2C%2085%20E%204th%20St%2C%20New%20York%2C%20NY!3m2!1d40.7261!2d-73.9893!4m5!1s0x89c259938694521b%3A0x5559e77b7b3c3c1!2sPete%27s%20Tavern%2C%20129%20E%2018th%20St%2C%20New%20York%2C%20NY!3m2!1d40.7365!2d-73.9882!4m5!1s0x89c259a1b5a1de99%3A0x8bed2f1d9e2e9dc7!2sThe%20Strand%20Bookstore%2C%20828%20Broadway%2C%20New%20York%2C%20NY!3m2!1d40.7329!2d-73.9910!4m5!1s0x89c2588640b10001%3A0xd16cd5fcb8fe9284!2sAlgonquin%20Hotel%2C%2059%20W%2044th%20St%2C%20New%20York%2C%20NY!3m2!1d40.7554!2d-73.9815!4m5!1s0x89c25900543f73a9%3A0xa!2sOscar%20Wilde%20Bar%2C%2045%20W%2027th%20St%2C%20New%20York%2C%20NY!3m2!1d40.7451!2d-73.9891!4m5!1s0x89c2599e2c3b3c5d%3A0xb!2sOld%20Town%20Bar%2C%2045%20E%2018th%20St%2C%20New%20York%2C%20NY!3m2!1d40.7376!2d-73.9894!5e0!3m2!1sen!2sus!4v1680000000000">
+  </iframe>
+  <p class="map-caption">✦ All bookstores and literary bars featured in this guide · bookstorebarcrawl.com</p>
+</section>
+
+<!-- SIGNUP -->
+<div class="signup">
+  <h2>Future Crawls & Updates</h2>
+  <p>Get notified when we organize the next group crawl through the stacks and stools of New York.</p>
+  <div class="signup-form">
+    <input type="email" id="email-input" placeholder="your@email.com" />
+    <button onclick="handleSignup()">Sign Up</button>
+  </div>
+  <p id="signup-confirm" style="display:none;margin-top:1rem;color:var(--moss);font-family:'Courier Prime',monospace;font-size:0.8rem;letter-spacing:0.1em;">✓ You're on the list.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-quote">"In wine there is wisdom, in beer there is freedom, in water there is bacteria." — Benjamin Franklin</p>
+  <hr />
+  <p><a href="mailto:nicholasbeck+books@gmail.com">Contact</a> &nbsp;·&nbsp; <a href="mailto:nicholasbeck+books@gmail.com">nicholasbeck+books@gmail.com</a></p>
+  <p style="margin-top:0.75rem;opacity:0.4;">© 2024 Bookstore Bar Crawl NYC &nbsp;·&nbsp; bookstorebarcrawl.com</p>
+</footer>
+
+<script>
+  function handleSignup() {
+    const email = document.getElementById('email-input').value;
+    if (!email || !email.includes('@')) return;
+    document.getElementById('signup-confirm').style.display = 'block';
+    document.querySelector('.signup-form').style.display = 'none';
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
     });
-  </script>
+  }, { threshold: 0.07 });
+
+  document.querySelectorAll('.neighborhood-section, .routes-section, .map-section, .origin-block').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(26px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
 
 </body>
 </html>
