@@ -20,6 +20,7 @@
       --rule: #c8b090;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; }
     html { scroll-behavior: smooth; }
     body {
       background-color: var(--cream);
@@ -377,7 +378,47 @@
       text-align: center;
     }
 
-    /* SIGNUP */
+    /* SHARE BAR */
+    .share-bar {
+      background: var(--ink);
+      padding: 2rem 2rem;
+      text-align: center;
+      border-top: 2px solid var(--whiskey);
+      border-bottom: 2px solid var(--whiskey);
+    }
+    .share-bar p {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--faded);
+      margin-bottom: 1rem;
+    }
+    .share-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.1rem;
+      border: 1px solid var(--rule);
+      color: var(--aged);
+      text-decoration: none;
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .share-btn:hover { background: var(--whiskey); border-color: var(--whiskey); color: var(--ink); }
+    .share-btn svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+    .share-btn.copied { background: var(--moss); border-color: var(--moss); color: white; }
     .signup {
       background: var(--parchment);
       border-top: 2px solid var(--rule);
@@ -543,8 +584,9 @@
     <li><a href="#flatiron">Flatiron</a></li>
     <li><a href="#lesside">LES & NoMad</a></li>
     <li><a href="#brooklyn">↓ Brooklyn</a></li>
-    <li><a href="#boerumhill">Boerum Hill</a></li>
+    <li><a href="#boerumhill">Carroll Gardens</a></li>
     <li><a href="#crownheights">Crown Heights</a></li>
+    <li><a href="#kensington">Park Slope</a></li>
     <li><a href="#williamsburg">Williamsburg</a></li>
     <li><a href="#routes">Crawl Routes</a></li>
     <li><a href="#map">Map</a></li>
@@ -587,6 +629,13 @@
       <p class="venue-address"><a href="https://maps.google.com/?q=Kettle+of+Fish+Bar+New+York" target="_blank" rel="noopener">59 Christopher St, New York, NY 10014</a></p>
       <p class="venue-bio">The epicenter of the Beat Generation. Jack Kerouac was famously photographed here, and it served as a meeting ground for Allen Ginsberg and a young Bob Dylan, who found his voice in these smoky rooms before becoming a legend.</p>
       <p class="notable">Jack Kerouac · Allen Ginsberg · Bob Dylan</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-bar">Bar</span>
+      <h3>Chumley's</h3>
+      <p class="venue-address"><a href="https://maps.google.com/?q=Chumley%27s+86+Bedford+St+New+York" target="_blank" rel="noopener">86 Bedford St, New York, NY 10014</a></p>
+      <p class="venue-bio">The most legendary speakeasy in New York literary history. Founded in 1922 by socialist activist Leland Chumley in an unmarked building with no sign — the origin of the phrase "86'd." Hemingway, F. Scott Fitzgerald, Steinbeck, Edna St. Vincent Millay, William Faulkner, Jack Kerouac, and J.D. Salinger all drank here. Book jackets of regulars were pasted to the walls as tribute. The Fitzgeralds always sat at Table 26, by the fireplace. Closed since COVID, but too historically significant to leave off any literary map.</p>
+      <p class="notable">Hemingway · Fitzgerald · Steinbeck · Kerouac · Est. 1922 · Closed</p>
     </div>
     <div class="venue-card">
       <span class="venue-type-badge badge-book">Bookstore</span>
@@ -633,6 +682,13 @@
       <p class="venue-address"><a href="https://maps.google.com/?q=The+Strand+Bookstore+New+York" target="_blank" rel="noopener">828 Broadway, New York, NY 10003</a></p>
       <p class="venue-bio">Famed for its "18 miles of books," this is the undisputed king of NYC bookstores. Since 1927 it has been the primary source for used, rare, and new titles for the city's intellectual elite. To visit New York without visiting the Strand is to have missed the point.</p>
       <p class="notable">18 Miles of Books · Est. 1927</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-book">Bar & Bookstore</span>
+      <h3>Book Club Bar</h3>
+      <p class="venue-address"><a href="https://maps.google.com/?q=Book+Club+Bar+197+E+3rd+St+New+York" target="_blank" rel="noopener">197 E 3rd St, New York, NY 10009</a></p>
+      <p class="venue-bio">The East Village's boozy bookstore — an independent general bookstore with a full-service espresso and cocktail bar, open since 2019. Literary-themed cocktails (the Murder on the Orient Espresso Martini is a staple), craft beer, and a cozy living-room atmosphere. Laptops are banned after 6pm, which is the point. Hosts author talks, poetry nights, and acoustic music series. The bar where Liz's Book Bar owner Maura Cheeks trained before opening her own spot in Brooklyn.</p>
+      <p class="notable">Literary Cocktails · Author Events · Est. 2019 · No Laptops After 6pm</p>
     </div>
   </div>
 </section>
@@ -744,7 +800,7 @@
 <!-- BOERUM HILL & PARK SLOPE -->
 <section class="neighborhood-section" id="boerumhill">
   <div class="section-header">
-    <h2>Boerum Hill, Park Slope & Red Hook</h2>
+    <h2>Boerum Hill, Carroll Gardens & Red Hook</h2>
     <div class="rule-line"></div>
     <span class="neighborhood-tag">Literary Brooklyn Heartland</span>
   </div>
@@ -755,6 +811,24 @@
       <p class="venue-address"><a href="https://maps.google.com/?q=Union+Hall+Brooklyn" target="_blank" rel="noopener">702 Union St, Brooklyn, NY 11215</a></p>
       <p class="venue-bio">A converted warehouse that feels like a cozy, oversized Victorian library — complete with a stone fireplace, floor-to-ceiling bookshelves, and leather armchairs. A favorite afternoon writing spot for Park Slope's literary community. The basement venue regularly hosts literary-minded comedy and storytelling shows that draw Brooklyn's best writers as both audience and performers.</p>
       <p class="notable">Storytelling & Literary Comedy · Victorian Library Aesthetic</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-book">Bar & Bookstore</span>
+      <h3>Liz's Book Bar</h3>
+      <p class="venue-address"><a href="https://maps.google.com/?q=Liz%27s+Book+Bar+315+Smith+St+Brooklyn" target="_blank" rel="noopener">315 Smith St, Brooklyn, NY 11231</a></p>
+      <p class="venue-bio">A Black woman-owned bookstore, coffee shop, and wine bar in Carroll Gardens, opened in 2024 by novelist Maura Cheeks — author of <em>Acts of Forgiveness</em>. Named after her grandmother, who took her to bookstores as a child. Coffee and pastries by day, natural wine and beer by night. The bar greets you at the door; the books are in the back. Carries 4,000 titles with a strong emphasis on Black authors. Just blocks from Books Are Magic.</p>
+      <p class="notable">Maura Cheeks · Black & Woman-Owned · Books + Wine · Est. 2024</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-book">Bookstore</span>
+      <h3>Books Are Magic</h3>
+      <p class="venue-address">
+        <a href="https://maps.google.com/?q=Books+Are+Magic+225+Smith+St+Brooklyn" target="_blank" rel="noopener">225 Smith St, Brooklyn, NY 11231</a>
+        <span style="color:var(--rule);margin:0 0.4em;">·</span>
+        <a href="https://maps.google.com/?q=Books+Are+Magic+122+Montague+St+Brooklyn" target="_blank" rel="noopener">122 Montague St, Brooklyn, NY 11201</a>
+      </p>
+      <p class="venue-bio">Founded and owned by <em>New York Times</em> bestselling novelist Emma Straub, with two Brooklyn locations: the original on Smith Street in Cobble Hill (Carroll Gardens), and a second in Brooklyn Heights on Montague Street. Each store is a genuine neighborhood institution — known for a curated selection, knowledgeable staff, a rich events calendar, and a sizable children's section. The Straubs have pledged to never open a third location.</p>
+      <p class="notable">Emma Straub · Cobble Hill + Brooklyn Heights · Est. 2017</p>
     </div>
     <div class="venue-card">
       <span class="venue-type-badge badge-book">Bookstore & Bar</span>
@@ -814,7 +888,7 @@
   </div>
   <div class="venue-grid">
     <div class="venue-card">
-      <span class="venue-type-badge badge-book">Bookstore</span>
+      <span class="venue-type-badge badge-book">Bar & Bookstore</span>
       <h3>Molasses Books</h3>
       <p class="venue-address"><a href="https://maps.google.com/?q=Molasses+Books+Brooklyn" target="_blank" rel="noopener">770 Hart St, Brooklyn, NY 11237</a></p>
       <p class="venue-bio">A cozy used bookstore that stays open late and serves coffee, beer, and wine alongside its shelves — a rare combination that draws Bushwick's younger writing community long after other shops have closed. Pioneered the beloved "books-for-bar-tab" trade-in system: bring in a stack of used books, drink for free. Low-key, unpretentious, and exactly what a neighborhood bookstore should be.</p>
@@ -829,13 +903,6 @@
     </div>
     <div class="venue-card">
       <span class="venue-type-badge badge-book">Bookstore</span>
-      <h3>The Ripped Bodice</h3>
-      <p class="venue-address"><a href="https://maps.google.com/?q=The+Ripped+Bodice+Bookstore+Brooklyn+NY" target="_blank" rel="noopener">Williamsburg, Brooklyn</a></p>
-      <p class="venue-bio">The only bookstore in New York dedicated exclusively to romance novels — from classic love stories to queer romance, historical fiction, and fantasy. Woman- and queer-owned, the Park Slope store features a diverse selection of romance fiction and hosts author talks, book clubs, and events. A joyful, unapologetic celebration of a genre that outsells literary fiction every year — and a genuinely beloved neighborhood institution.</p>
-      <p class="notable">Romance-Only · Woman & Queer Owned · Author Events</p>
-    </div>
-    <div class="venue-card">
-      <span class="venue-type-badge badge-book">Bookstore</span>
       <h3>WORD</h3>
       <p class="venue-address"><a href="https://maps.google.com/?q=WORD+Bookstore+126+Franklin+St+Brooklyn" target="_blank" rel="noopener">126 Franklin St, Brooklyn, NY 11222</a></p>
       <p class="venue-bio">An independent community bookstore since 2007, with locations in Greenpoint, Brooklyn and Jersey City. Small but mighty — specializing in literary fiction, nonfiction, and children's books, with a basement event space that has hosted Murakami midnight parties, Bananagrams tournaments, and readings by Jonathan Lethem and Alice Munro. A true neighborhood anchor in Greenpoint's creative community.</p>
@@ -847,6 +914,31 @@
       <p class="venue-address"><a href="https://maps.google.com/?q=Turkey%27s+Nest+Tavern+94+Bedford+Ave+Brooklyn" target="_blank" rel="noopener">94 Bedford Ave, Brooklyn, NY 11211</a></p>
       <p class="venue-bio">More dive bar than library, but a storied Williamsburg haunt for writers who prefer grit over glamour. In the era before the neighborhood was discovered, this was where the creative class drank cheaply and argued loudly. It has appeared in novels and essays as a symbol of the neighborhood's pre-gentrification soul — a reminder of the Brooklyn that made the writers who later made Brooklyn famous.</p>
       <p class="notable">Pre-Gentrification Williamsburg · Writers' Dive · Bedford Ave</p>
+    </div>
+  </div>
+</section>
+
+<!-- KENSINGTON & PARK SLOPE -->
+<section class="neighborhood-section" id="kensington">
+  <div class="section-header">
+    <h2>Park Slope & Kensington</h2>
+    <div class="rule-line"></div>
+    <span class="neighborhood-tag">South Brooklyn Literary</span>
+  </div>
+  <div class="venue-grid">
+    <div class="venue-card">
+      <span class="venue-type-badge badge-book">Bookstore</span>
+      <h3>The Ripped Bodice</h3>
+      <p class="venue-address"><a href="https://maps.google.com/?q=The+Ripped+Bodice+218+5th+Ave+Brooklyn" target="_blank" rel="noopener">218 5th Ave, Brooklyn, NY 11215</a></p>
+      <p class="venue-bio">The only bookstore in New York dedicated exclusively to romance novels — from classic love stories to queer romance, historical fiction, and fantasy. Woman- and queer-owned, this Park Slope store features a diverse and joyful selection of romance fiction and hosts author talks, book clubs, and events. A celebration of a genre that outsells literary fiction every year — and a genuinely beloved neighborhood institution.</p>
+      <p class="notable">Romance-Only · Woman & Queer Owned · Author Events</p>
+    </div>
+    <div class="venue-card">
+      <span class="venue-type-badge badge-book">Bookstore</span>
+      <h3>Lofty Pigeon Books</h3>
+      <p class="venue-address"><a href="https://maps.google.com/?q=Lofty+Pigeon+Books+743+Church+Ave+Brooklyn" target="_blank" rel="noopener">743 Church Ave, Brooklyn, NY 11218</a></p>
+      <p class="venue-bio">A community-focused independent bookstore in Kensington, opened in September 2023 by wife-and-husband team Briana Parker and Davi Marra — both veteran booksellers who met working at the Corner Bookstore on the Upper East Side. Founded on the principle that a bookstore should serve everyone in its neighborhood. Multiple seating areas, an outdoor space, a children's corner, and shelves built around local requests. A handsome mural outside has made it a neighborhood landmark in under two years.</p>
+      <p class="notable">Community-First · Est. 2023 · Kensington Neighborhood Anchor</p>
     </div>
   </div>
 </section>
@@ -918,16 +1010,28 @@
 
     <div class="route-card">
       <div class="route-number">04</div>
-      <h3>The Brooklyn Crawl</h3>
-      <p class="route-meta">Boerum Hill → Park Slope → Crown Heights · Full afternoon</p>
+      <h3>The Smith Street Crawl</h3>
+      <p class="route-meta">Carroll Gardens · Fully walkable · Afternoon</p>
       <ul class="route-stops">
-        <li><span class="stop-num">1.</span> The Center for Fiction <span class="stop-note">start with a book</span></li>
-        <li><span class="stop-num">2.</span> Union Hall <span class="stop-note">read by the fireplace</span></li>
-        <li><span class="stop-num">3.</span> Greenlight Bookstore <span class="stop-note">Fort Greene</span></li>
-        <li><span class="stop-num">4.</span> Franklin Park <span class="stop-note">check reading schedule</span></li>
-        <li><span class="stop-num">5.</span> Sunny's Bar <span class="stop-note">Red Hook nightcap</span></li>
+        <li><span class="stop-num">1.</span> Books Are Magic <span class="stop-note">225 Smith St</span></li>
+        <li><span class="stop-num">2.</span> Liz's Book Bar <span class="stop-note">coffee → wine</span></li>
+        <li><span class="stop-num">3.</span> The Center for Fiction <span class="stop-note">literary cocktails</span></li>
+        <li><span class="stop-num">4.</span> Sunny's Bar <span class="stop-note">10 min walk to Red Hook</span></li>
       </ul>
-      <a class="map-link" href="https://www.google.com/maps/dir/Center+for+Fiction,+15+Lafayette+Ave,+Brooklyn/Union+Hall,+702+Union+St,+Brooklyn/Greenlight+Bookstore,+686+Fulton+St,+Brooklyn/Franklin+Park,+618+St+Johns+Pl,+Brooklyn/Sunny%27s+Bar,+253+Conover+St,+Brooklyn" target="_blank">Open in Google Maps →</a>
+      <a class="map-link" href="https://www.google.com/maps/dir/Books+Are+Magic+225+Smith+St+Brooklyn/Liz%27s+Book+Bar+315+Smith+St+Brooklyn/Center+for+Fiction+15+Lafayette+Ave+Brooklyn/Sunny%27s+Bar+253+Conover+St+Brooklyn" target="_blank">Open in Google Maps →</a>
+    </div>
+
+    <div class="route-card">
+      <div class="route-number">05</div>
+      <h3>The Fort Greene Crawl</h3>
+      <p class="route-meta">Fort Greene → Park Slope → Crown Heights · ~2 miles walkable</p>
+      <ul class="route-stops">
+        <li><span class="stop-num">1.</span> Greenlight Bookstore <span class="stop-note">Fort Greene</span></li>
+        <li><span class="stop-num">2.</span> The Ripped Bodice <span class="stop-note">Park Slope</span></li>
+        <li><span class="stop-num">3.</span> Union Hall <span class="stop-note">fireplace + bookshelves</span></li>
+        <li><span class="stop-num">4.</span> Franklin Park <span class="stop-note">check reading schedule</span></li>
+      </ul>
+      <a class="map-link" href="https://www.google.com/maps/dir/Greenlight+Bookstore+686+Fulton+St+Brooklyn/The+Ripped+Bodice+218+5th+Ave+Brooklyn/Union+Hall+702+Union+St+Brooklyn/Franklin+Park+618+St+Johns+Pl+Brooklyn" target="_blank">Open in Google Maps →</a>
     </div>
 
   </div>
@@ -950,6 +1054,29 @@
   <p class="map-caption">✦ All bookstores and literary bars featured in this guide · bookstorebarcrawl.com</p>
 </section>
 
+<!-- SHARE BAR -->
+<div class="share-bar">
+  <p>✦ Share This Guide ✦</p>
+  <div class="share-buttons">
+    <a class="share-btn" href="https://twitter.com/intent/tweet?text=NYC%20has%20the%20best%20literary%20bars%20%26%20bookstores.%20Check%20out%20this%20guide%20%F0%9F%93%9A%F0%9F%8D%BA&url=https%3A%2F%2Fbookstorebarcrawl.com" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      Share on X
+    </a>
+    <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbookstorebarcrawl.com" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      Share on Facebook
+    </a>
+    <a class="share-btn" id="share-native" href="#" onclick="shareNative(event)">
+      <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+      Share
+    </a>
+    <button class="share-btn" id="copy-btn" onclick="copyLink()">
+      <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+      Copy Link
+    </button>
+  </div>
+</div>
+
 <!-- SIGNUP -->
 <div class="signup">
   <h2>Future Crawls & Updates</h2>
@@ -970,7 +1097,36 @@
 </footer>
 
 <script>
-  const signupForm = document.getElementById('signup-form');
+  function copyLink() {
+    navigator.clipboard.writeText('https://bookstorebarcrawl.com').then(() => {
+      const btn = document.getElementById('copy-btn');
+      btn.classList.add('copied');
+      btn.innerHTML = '<svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Copied!';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = '<svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copy Link';
+      }, 2000);
+    });
+  }
+
+  function shareNative(e) {
+    e.preventDefault();
+    if (navigator.share) {
+      navigator.share({
+        title: 'Bookstore Bar Crawl NYC',
+        text: 'NYC has the best literary bars & bookstores. Check out this guide 📚🍺',
+        url: 'https://bookstorebarcrawl.com'
+      });
+    } else {
+      document.getElementById('share-native').style.display = 'none';
+    }
+  }
+
+  // Hide native share button on desktop where it's not supported
+  if (!navigator.share) {
+    const native = document.getElementById('share-native');
+    if (native) native.style.display = 'none';
+  } = document.getElementById('signup-form');
   if (signupForm) {
     signupForm.addEventListener('submit', async function(e) {
       e.preventDefault();
@@ -983,9 +1139,4 @@
           body: JSON.stringify({ email: email })
         });
         if (response.ok) {
-          document.getElementById('signup-confirm').style.display = 'block';
-          signupForm.style.display = 'none';
-        }
-      } catch(err) {
-        document.getElementById('signup-confirm').style.display = 'block';
-        signupForm.style.display = 'non
+          document
